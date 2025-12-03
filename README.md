@@ -49,4 +49,4 @@ The project is organized as a monorepo:
 - **Infra**: Google Cloud Run, Firebase.
 
 ---
-Made with ❤️ by Tico & Antigravity
+Made with ❤️ by ticoxz
