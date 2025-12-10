@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --banana-yellow: #FFD93D;
+  --leaf-green: #6BCB77;
+  --tech-blue: #4D96FF;
+  --bg-dark: #1A1A2E;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --foreground: #e8eaed;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0d0d12;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#FFD93D] via-[#6BCB77] to-[#4D96FF];
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
+  }
+}
