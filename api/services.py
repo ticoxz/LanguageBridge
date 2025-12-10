@@ -162,27 +162,33 @@ class SmartAssistant:
     def __init__(self, api_key: str = None):
         if api_key:
             genai.configure(api_key=api_key)
-            self.model = genai.GenerativeModel('gemini-2.0-flash')
+            # gemini-pro has separate quota from flash models
+            self.model = genai.GenerativeModel('gemini-pro')
             self.active = True
         else:
             print("Warning: No Gemini API Key provided.")
             self.active = False
 
-    async def generate_replies(self, text: str, target_lang: str = "es"):
+    async def generate_replies(self, text: str, target_lang: str = "auto"):
         if not self.active:
             return {
                 "translation": f"[Mock] {text}",
                 "replies": ["Ok", "Tell me more", "Next"]
             }
 
+        # Auto-detect language and translate to opposite
         prompt = f"""
-        Translate the following text to {target_lang} and provide 3 short, professional 'smart replies' 
-        that I (the listener) could say in response to this text.
+        Analyze the following text and:
+        1. Detect if it's in Spanish or English
+        2. If Spanish, translate to English
+        3. If English, translate to Spanish
+        4. Provide 3 short, professional smart replies in the SAME language as the input
         
         Input Text: "{text}"
         
         Output Format (JSON):
         {{
+            "detected_language": "es" or "en",
             "translation": "Translated text here",
             "replies": ["Reply 1", "Reply 2", "Reply 3"]
         }}

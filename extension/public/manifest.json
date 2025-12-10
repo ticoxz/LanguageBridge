@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "LanguageBridge",
-    "version": "1.0",
-    "description": "Invisible Copilot for Meeting Translation",
+    "name": "L-Bridge",
+    "version": "1.0.0",
+    "description": "Real-time meeting transcription & translation",
     "permissions": [
         "activeTab",
         "scripting",

@@ -82,32 +82,38 @@ async def audio_stream(websocket: WebSocket, user_id: str = Query(..., descripti
                     "is_final": is_final
                 })
                 
-                # If final, trigger LLM in background to avoid blocking transcription
+                # If final, trigger LLM in background (only for phrases with 5+ words to save quota)
                 if is_final:
-                    async def run_translation(text_to_translate):
-                        try:
-                            print(f"DEBUG: Starting translation for: {text_to_translate[:50]}...", flush=True)
-                            analysis = await assistant.generate_replies(text_to_translate)
-                            print(f"DEBUG: Translation received: {analysis}", flush=True)
-                            
-                            # Check if WebSocket is still open
-                            if websocket.client_state.name != "CONNECTED":
-                                print("DEBUG: WebSocket closed, skipping translation send", flush=True)
-                                return
-                            
-                            await websocket.send_json({
-                                "type": "translation",
-                                "original": text_to_translate,
-                                "translation": analysis.get("translation", ""),
-                                "replies": analysis.get("replies", [])
-                            })
-                            print("DEBUG: Translation sent successfully", flush=True)
-                        except Exception as e:
-                            print(f"Translation task error: {e}", flush=True)
-                            import traceback
-                            traceback.print_exc()
+                    # Count words to avoid wasting API calls on short phrases
+                    word_count = len(transcript.strip().split())
+                    
+                    if word_count >= 5:
+                        async def run_translation(text_to_translate):
+                            try:
+                                print(f"DEBUG: Starting translation for: {text_to_translate[:50]}... ({word_count} words)", flush=True)
+                                analysis = await assistant.generate_replies(text_to_translate)
+                                print(f"DEBUG: Translation received: {analysis}", flush=True)
+                                
+                                # Check if WebSocket is still open
+                                if websocket.client_state.name != "CONNECTED":
+                                    print("DEBUG: WebSocket closed, skipping translation send", flush=True)
+                                    return
+                                
+                                await websocket.send_json({
+                                    "type": "translation",
+                                    "original": text_to_translate,
+                                    "translation": analysis.get("translation", ""),
+                                    "replies": analysis.get("replies", [])
+                                })
+                                print("DEBUG: Translation sent successfully", flush=True)
+                            except Exception as e:
+                                print(f"Translation task error: {e}", flush=True)
+                                import traceback
+                                traceback.print_exc()
 
-                    asyncio.create_task(run_translation(transcript))
+                        asyncio.create_task(run_translation(transcript))
+                    else:
+                        print(f"DEBUG: Skipping translation for short phrase ({word_count} words): {transcript}", flush=True)
 
         transcription_task = asyncio.create_task(process_transcription())
 

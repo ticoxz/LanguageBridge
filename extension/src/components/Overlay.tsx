@@ -67,12 +67,13 @@ const Overlay: React.FC<OverlayProps> = ({
                 borderBottom: '1px solid #3c4043'
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ fontWeight: 600, color: '#8ab4f8' }}>LanguageBridge</span>
+                    <span style={{ fontWeight: 700, fontSize: '15px', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>L-Bridge</span>
                     <div style={{
                         width: '8px',
                         height: '8px',
                         borderRadius: '50%',
-                        background: isListening ? '#34a853' : '#ea4335'
+                        background: isListening ? '#34a853' : '#ea4335',
+                        boxShadow: isListening ? '0 0 8px #34a853' : 'none'
                     }} />
                 </div>
                 <div style={{ display: 'flex', gap: '8px' }}>
