@@ -10,7 +10,6 @@ import { useEffect, useState, useRef } from 'react';
 export default function Home() {
   const { t, language, setLanguage } = useLanguage();
   const { theme, setTheme } = useTheme();
-  // const [mounted, setMounted] = useState(false); // Removed to fix ref hydration
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -20,10 +19,6 @@ export default function Home() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
   const y = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
-
-  // useEffect(() => setMounted(true), []); // Removed
-
-  // if (!mounted) return null; // Removed
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden bg-background text-foreground transition-colors duration-300">
@@ -72,35 +67,35 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <main ref={targetRef} className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      <main ref={targetRef} className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
         {/* Dynamic Background */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-[#FFD93D] rounded-full mix-blend-screen blur-[120px] opacity-20 animate-pulse-slow" />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#6BCB77] rounded-full mix-blend-screen blur-[120px] opacity-20 animate-pulse-slow delay-1000" />
-          <div className="absolute top-[40%] left-[30%] w-[400px] h-[400px] bg-[#4D96FF] rounded-full mix-blend-screen blur-[100px] opacity-20 animate-pulse-slow delay-2000" />
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-[#FFD93D] rounded-full mix-blend-screen blur-[120px] opacity-10 animate-pulse-slow" />
+          <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#6BCB77] rounded-full mix-blend-screen blur-[120px] opacity-10 animate-pulse-slow delay-1000" />
         </div>
 
-        <motion.div
-          style={{ opacity, scale, y }}
-          className="container mx-auto px-6 text-center relative z-10"
-        >
+        <div className="container mx-auto relative z-10 text-center max-w-5xl">
           <motion.h1
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-7xl md:text-9xl font-black mb-8 tracking-tighter leading-tight"
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight mb-8"
           >
-            {language === 'en' ? 'Break ' : 'Rompe '} <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FFD93D] via-[#6BCB77] to-[#4D96FF] drop-shadow-[0_0_30px_rgba(255,217,61,0.5)]">
-              {language === 'en' ? 'Barriers' : 'Barreras'}
+            {language === 'en' ? 'ELIMINATE LANGUAGE ' : 'ELIMINA LA ANSIEDAD '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD93D] to-[#6BCB77]">
+              {language === 'en' ? 'ANXIETY.' : 'DEL IDIOMA.'}
+            </span>
+            <br className="hidden md:block" />
+            <span className="text-white/80 text-4xl md:text-6xl block mt-4">
+              {language === 'en' ? 'ZERO ERRORS. 100% PRODUCTIVITY.' : 'CERO ERRORES. 100% PRODUCTIVIDAD.'}
             </span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 1 }}
-            className="text-2xl md:text-3xl text-muted-foreground max-w-3xl mx-auto mb-12 font-light leading-relaxed"
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 font-light"
           >
             {t('hero.subtitle')}
           </motion.p>
@@ -109,155 +104,97 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            className="flex flex-col items-center gap-4"
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-5 bg-gradient-to-r from-[#FFD93D] via-[#F4D03F] to-[#6BCB77] text-[#1A1A2E] text-xl font-bold rounded-full shadow-[0_0_40px_rgba(255,217,61,0.6)] hover:shadow-[0_0_60px_rgba(255,217,61,0.8)] transition-all flex items-center gap-3 border border-white/20"
-            >
-              {t('hero.cta')} <ArrowRight size={24} />
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-5 bg-white/5 hover:bg-white/20 text-foreground text-xl font-semibold rounded-full border border-white/20 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all flex items-center gap-3"
-              onClick={() => window.open('https://github.com/ticoxz/LanguageBridge', '_blank')}
-            >
-              <Github size={24} /> {t('hero.github')}
-            </motion.button>
+            <button className="px-12 py-6 bg-white text-black text-xl font-bold rounded-full hover:scale-105 transition-transform shadow-[0_0_50px_rgba(255,255,255,0.3)]">
+              {t('hero.cta')}
+            </button>
+            <span className="text-sm text-muted-foreground opacity-70">
+              {t('hero.cta_sub')}
+            </span>
           </motion.div>
-        </motion.div>
+        </div>
       </main>
 
-      {/* Sticky Scroll Section - How It Works */}
-      <section className="relative py-32 bg-background z-20">
+      {/* 3 Key Features Icons */}
+      <section className="py-20 bg-white/5 border-y border-white/5">
         <div className="container mx-auto px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-5xl md:text-7xl font-bold text-center mb-32 tracking-tight"
-          >
-            {t('how.title')}
-          </motion.h2>
-
-          <div className="space-y-40">
-            <Step
-              number="01"
-              title={t('how.step1')}
-              desc={t('how.step1.desc')}
-              align="left"
-              color="#FFD93D"
-            />
-            <Step
-              number="02"
-              title={t('how.step2')}
-              desc={t('how.step2.desc')}
-              align="right"
-              color="#6BCB77"
-            />
-            <Step
-              number="03"
-              title={t('how.step3')}
-              desc={t('how.step3.desc')}
-              align="left"
-              color="#4D96FF"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            <FeatureIcon icon={<MessageSquare size={40} />} title={t('features.subtitles')} desc={t('features.subtitles.desc')} color="#FFD93D" />
+            <FeatureIcon icon={<Zap size={40} />} title={t('features.smart')} desc={t('features.smart.desc')} color="#6BCB77" />
+            <FeatureIcon icon={<Code size={40} />} title={t('features.summaries')} desc={t('features.summaries.desc')} color="#4D96FF" />
           </div>
         </div>
       </section>
 
-      {/* Use Cases Section */}
-      <section className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FFD93D]/5 to-transparent" />
-        <div className="container mx-auto px-6 relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold text-center mb-24">
-            {t('usecases.title')}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <UseCaseCard
-              title={t('usecases.remote')}
-              desc={t('usecases.remote.desc')}
-              icon={<Globe size={32} className="text-[#FFD93D]" />}
-              delay={0}
-            />
-            <UseCaseCard
-              title={t('usecases.students')}
-              desc={t('usecases.students.desc')}
-              icon={<Code size={32} className="text-[#6BCB77]" />}
-              delay={0.2}
-            />
-            <UseCaseCard
-              title={t('usecases.creators')}
-              desc={t('usecases.creators.desc')}
-              icon={<Play size={32} className="text-[#4D96FF]" />}
-              delay={0.4}
-            />
+      {/* Pain Section */}
+      <section className="py-32">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">{t('pain.title')}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <PainCard title={t('pain.error')} desc={t('pain.error.desc')} icon={<Shield size={40} className="text-red-400" />} />
+            <PainCard title={t('pain.silent')} desc={t('pain.silent.desc')} icon={<Mic size={40} className="text-orange-400" />} />
           </div>
         </div>
       </section>
 
-      {/* Bento Grid Features (Staggered V2) */}
-      <section id="features" className="py-32 bg-muted/50">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-6xl font-bold text-center mb-24">
-            {t('features.title')}
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-6 max-w-7xl mx-auto auto-rows-[300px]">
-            {/* Large Card */}
-            <BentoCard
-              title={t('features.transcription')}
-              desc={t('features.transcription.desc')}
-              icon={<Mic size={48} className="text-[#FFD93D]" />}
-              className="md:col-span-4 bg-gradient-to-br from-[#FFD93D]/10 to-transparent border-[#FFD93D]/20 hover:border-[#FFD93D]/50"
-            />
-            {/* Tall Card */}
-            <BentoCard
-              title={t('features.privacy')}
-              desc={t('features.privacy.desc')}
-              icon={<Shield size={48} className="text-[#6BCB77]" />}
-              className="md:col-span-2 md:row-span-2 bg-gradient-to-b from-[#6BCB77]/10 to-transparent border-[#6BCB77]/20 hover:border-[#6BCB77]/50"
-            />
-            {/* Medium Card */}
-            <BentoCard
-              title={t('features.translation')}
-              desc={t('features.translation.desc')}
-              icon={<Globe size={48} className="text-[#4D96FF]" />}
-              className="md:col-span-2 bg-gradient-to-tr from-[#4D96FF]/10 to-transparent border-[#4D96FF]/20 hover:border-[#4D96FF]/50"
-            />
-            {/* Medium Card */}
-            <BentoCard
-              title="Github"
-              desc={t('hero.github')}
-              icon={<Github size={48} className="text-white" />}
-              className="md:col-span-2 cursor-pointer bg-white/5 hover:bg-white/10"
-              onClick={() => window.open('https://github.com/ticoxz/LanguageBridge', '_blank')}
-            />
+      {/* Trust / Different Section */}
+      <section className="py-32 bg-gradient-to-b from-transparent to-white/5">
+        <div className="container mx-auto px-6 max-w-4xl text-center">
+          <h2 className="text-3xl md:text-5xl font-bold mb-16 leading-tight">{t('trust.title')}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-8 rounded-3xl bg-black/40 border border-white/10">
+              <Shield size={48} className="mx-auto mb-6 text-[#6BCB77]" />
+              <h3 className="text-2xl font-bold mb-4">{t('trust.privacy')}</h3>
+              <p className="text-muted-foreground">{t('trust.privacy.desc')}</p>
+            </div>
+            <div className="p-8 rounded-3xl bg-black/40 border border-white/10">
+              <Zap size={48} className="mx-auto mb-6 text-[#4D96FF]" />
+              <h3 className="text-2xl font-bold mb-4">{t('trust.disruption')}</h3>
+              <p className="text-muted-foreground">{t('trust.disruption.desc')}</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Specs Section */}
-      <section className="py-24 border-t border-white/5">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-16 text-gray-500 uppercase tracking-widest">{t('specs.title')}</h2>
-          <div className="flex flex-wrap justify-center gap-12 md:gap-24 text-center">
-            <div>
-              <div className="text-4xl md:text-5xl font-black text-[#FFD93D] mb-2 font-mono">&lt;500ms</div>
-              <div className="text-sm font-medium text-gray-400 uppercase tracking-widest">{t('specs.latency')}</div>
+      {/* Pricing Section */}
+      <section className="py-32">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">{t('pricing.title')}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-10 rounded-3xl border border-white/10 bg-white/5 flex flex-col items-center text-center hover:border-white/20 transition-colors">
+              <h3 className="text-2xl font-bold mb-2 uppercase tracking-widest text-[#FFD93D]">{t('pricing.free')}</h3>
+              <div className="text-5xl font-black mb-6">$0</div>
+              <p className="text-xl text-muted-foreground mb-8">{t('pricing.free.desc')}</p>
+              <button className="mt-auto px-8 py-3 rounded-full border border-white/20 hover:bg-white/10 transition-colors font-medium">
+                {t('hero.cta')}
+              </button>
             </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-black text-[#6BCB77] mb-2 font-mono">99.9%</div>
-              <div className="text-sm font-medium text-gray-400 uppercase tracking-widest">{t('specs.accuracy')}</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-black text-[#4D96FF] mb-2 font-mono">E2E</div>
-              <div className="text-sm font-medium text-gray-400 uppercase tracking-widest">{t('specs.security')}</div>
+            <div className="p-10 rounded-3xl border border-[#6BCB77]/30 bg-gradient-to-b from-[#6BCB77]/10 to-transparent flex flex-col items-center text-center relative overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-1 bg-[#6BCB77] shadow-[0_0_20px_#6BCB77]" />
+              <h3 className="text-2xl font-bold mb-2 uppercase tracking-widest text-[#6BCB77]">{t('pricing.pro')}</h3>
+              <div className="text-5xl font-black mb-6">{t('pricing.pro.price')}</div>
+              <p className="text-xl text-muted-foreground mb-8">{t('pricing.pro.desc')}</p>
+              <button className="mt-auto px-8 py-3 rounded-full bg-[#6BCB77] text-black hover:bg-[#5db368] transition-colors font-bold shadow-lg shadow-[#6BCB77]/20">
+                {t('hero.cta')}
+              </button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Email Capture */}
+      <section className="py-32 border-t border-white/10 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FFD93D]/10 via-transparent to-[#4D96FF]/10 opacity-30" />
+        <div className="container mx-auto px-6 max-w-xl relative z-10 text-center">
+          <h2 className="text-3xl font-bold mb-8">{t('form.join')}</h2>
+          <form className="flex flex-col gap-4">
+            <input type="text" placeholder={t('form.name')} className="p-4 rounded-xl bg-white/5 border border-white/10 focus:border-white/30 outline-none transition-colors" />
+            <input type="email" placeholder={t('form.placeholder')} className="p-4 rounded-xl bg-white/5 border border-white/10 focus:border-white/30 outline-none transition-colors" />
+            <button type="submit" className="p-4 rounded-xl bg-white text-black font-bold text-lg hover:scale-[1.02] transition-transform">
+              {t('hero.cta')}
+            </button>
+          </form>
         </div>
       </section>
 
@@ -273,71 +210,29 @@ export default function Home() {
   );
 }
 
-// ... Step component ...
-
-function Step({ number, title, desc, align, color }: { number: string, title: string, desc: string, align: 'left' | 'right', color: string }) {
+function FeatureIcon({ icon, title, desc, color }: { icon: React.ReactNode, title: string, desc: string, color: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, x: align === 'left' ? -50 : 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-20%" }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`flex flex-col md:flex-row items-center gap-12 ${align === 'right' ? 'md:flex-row-reverse' : ''}`}
-    >
-      <div className="flex-1 text-center md:text-left">
-        <div
-          className="text-8xl md:text-9xl font-black opacity-30 mb-4 tracking-tighter"
-          style={{ color: color, textShadow: `0 0 30px ${color}40` }}
-        >
-          {number}
-        </div>
-        <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: color }}>{title}</h3>
-        <p className="text-2xl text-muted-foreground leading-relaxed">{desc}</p>
+    <div className="flex flex-col items-center">
+      <div className="w-20 h-20 rounded-2xl bg-white/5 flex items-center justify-center mb-6 text-white shadow-xl shadow-black/50 overflow-hidden relative group">
+        <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity" style={{ backgroundColor: color }} />
+        <div className="relative z-10" style={{ color: color }}>{icon}</div>
       </div>
-      <div className="flex-1 h-64 md:h-96 w-full glass-card rounded-[2rem] flex items-center justify-center bg-black/20 border border-white/10 relative overflow-hidden group shadow-2xl">
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/80" />
-        <div className="w-48 h-48 rounded-full blur-[80px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 group-hover:scale-150 group-hover:opacity-100 opacity-60" style={{ background: color }} />
-        <div className="relative z-10 text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] transition-transform duration-500 group-hover:scale-110">
-          {number === '01' && <Zap size={100} strokeWidth={1.5} />}
-          {number === '02' && <Code size={100} strokeWidth={1.5} />}
-          {number === '03' && <MessageSquare size={100} strokeWidth={1.5} />}
-        </div>
-      </div>
-    </motion.div>
+      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <p className="text-muted-foreground text-sm max-w-[200px] mx-auto opacity-70">{desc}</p>
+    </div>
   )
 }
 
-function BentoCard({ title, desc, icon, className, onClick }: { title: string, desc: string, icon: React.ReactNode, className?: string, onClick?: () => void }) {
+function PainCard({ title, desc, icon }: { title: string, desc: string, icon: React.ReactNode }) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.02 }}
-      className={`p-10 rounded-3xl border backdrop-blur-xl transition-all duration-500 flex flex-col justify-between group overflow-hidden relative ${className}`}
-      onClick={onClick}
-    >
-      {/* Removed decorative icon as requested */}
-      <div className="relative z-10">
-        <div className="mb-6 opacity-80 group-hover:opacity-100 transition-opacity">{icon}</div>
-        <h3 className="text-3xl font-bold mb-4">{title}</h3>
-        <p className="text-xl text-muted-foreground/80 group-hover:text-muted-foreground transition-colors">{desc}</p>
-      </div>
-    </motion.div>
-  )
-}
-
-function UseCaseCard({ title, desc, icon, delay }: { title: string, desc: string, icon: React.ReactNode, delay: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay, duration: 0.5 }}
-      className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-colors"
-    >
-      <div className="bg-white/5 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+    <div className="p-8 rounded-3xl bg-[#1A1A2E] border border-white/5 hover:border-white/10 transition-colors flex gap-6 items-start group">
+      <div className="shrink-0 p-4 rounded-xl bg-white/5 group-hover:scale-110 transition-transform">
         {icon}
       </div>
-      <h3 className="text-xl font-bold mb-3">{title}</h3>
-      <p className="text-gray-400">{desc}</p>
-    </motion.div>
+      <div>
+        <h3 className="text-2xl font-bold mb-3 group-hover:text-white transition-colors">{title}</h3>
+        <p className="text-lg text-muted-foreground leading-relaxed">{desc}</p>
+      </div>
+    </div>
   )
 }
