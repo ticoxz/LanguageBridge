@@ -138,6 +138,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Sticky Scroll Section - How It Works */}
+      <section className="relative py-32 bg-background z-20">
+        <div className="container mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-4xl md:text-6xl font-bold text-center mb-32 tracking-tight"
+          >
+            {t('how.title')}
+          </motion.h2>
+
+          <div className="space-y-40">
+            <Step
+              number="01"
+              title={t('how.step1')}
+              desc={t('how.step1.desc')}
+              align="left"
+              color="#FFD93D"
+            />
+            <Step
+              number="02"
+              title={t('how.step2')}
+              desc={t('how.step2.desc')}
+              align="right"
+              color="#6BCB77"
+            />
+            <Step
+              number="03"
+              title={t('how.step3')}
+              desc={t('how.step3.desc')}
+              align="left"
+              color="#4D96FF"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Trust / Different Section */}
       <section className="py-32 bg-gradient-to-b from-transparent to-white/5">
         <div className="container mx-auto px-6 max-w-4xl text-center">
