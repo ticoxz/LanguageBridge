@@ -274,3 +274,35 @@ function PainCard({ title, desc, icon }: { title: string, desc: string, icon: Re
     </div>
   )
 }
+
+function Step({ number, title, desc, align, color }: { number: string, title: string, desc: string, align: 'left' | 'right', color: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: align === 'left' ? -50 : 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-20%" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`flex flex-col md:flex-row items-center gap-12 ${align === 'right' ? 'md:flex-row-reverse' : ''}`}
+    >
+      <div className="flex-1 text-center md:text-left">
+        <div
+          className="text-8xl md:text-9xl font-black opacity-30 mb-4 tracking-tighter"
+          style={{ color: color, textShadow: `0 0 30px ${color}40` }}
+        >
+          {number}
+        </div>
+        <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: color }}>{title}</h3>
+        <p className="text-2xl text-muted-foreground leading-relaxed">{desc}</p>
+      </div>
+      <div className="flex-1 h-64 md:h-96 w-full glass-card rounded-[2rem] flex items-center justify-center bg-black/20 border border-white/10 relative overflow-hidden group shadow-2xl">
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/80" />
+        <div className="w-48 h-48 rounded-full blur-[80px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 group-hover:scale-150 group-hover:opacity-100 opacity-60" style={{ background: color }} />
+        <div className="relative z-10 text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] transition-transform duration-500 group-hover:scale-110">
+          {number === '01' && <Zap size={100} strokeWidth={1.5} />}
+          {number === '02' && <Code size={100} strokeWidth={1.5} />}
+          {number === '03' && <MessageSquare size={100} strokeWidth={1.5} />}
+        </div>
+      </div>
+    </motion.div>
+  )
+}
