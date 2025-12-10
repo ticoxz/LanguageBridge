@@ -33,3 +33,7 @@ pnpm-debug.log*
 .vscode
 *.swp
 *.swo
+
+# Secrets & Credentials
+api/credenciales.json
+api/logs.txt
