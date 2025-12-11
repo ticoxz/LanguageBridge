@@ -67,7 +67,7 @@ const Overlay: React.FC<OverlayProps> = ({
                 borderBottom: '1px solid #3c4043'
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ fontWeight: 700, fontSize: '15px', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>L-Bridge</span>
+                    <span style={{ fontWeight: 700, fontSize: '15px', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>B-Bridge</span>
                     <div style={{
                         width: '8px',
                         height: '8px',

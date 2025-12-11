@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "L-Bridge 🍌 - Real-time Meeting Transcription",
+  title: "B-Bridge 🍌 - Real-time Meeting Transcription",
   description: "Break language barriers with real-time transcription and translation for Google Meet. Powered by AI.",
 };
 

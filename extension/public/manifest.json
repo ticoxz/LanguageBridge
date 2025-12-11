@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "L-Bridge",
+    "name": "B-Bridge",
     "version": "1.0.0",
     "description": "Real-time meeting transcription & translation",
     "permissions": [

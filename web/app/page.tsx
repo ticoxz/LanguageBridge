@@ -37,7 +37,7 @@ export default function Home() {
             >
               🍌
             </motion.span>
-            <span className="text-gradient">L-Bridge</span>
+            <span className="text-gradient">B-Bridge</span>
           </motion.div>
 
           <div className="flex gap-4 items-center">

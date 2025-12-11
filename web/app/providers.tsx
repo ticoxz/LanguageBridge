@@ -19,7 +19,7 @@ const translations = {
         'hero.cta_sub': 'Includes 15 Minutes of Instant Translation per Month',
         'hero.github': 'Star on GitHub',
 
-        'features.title': 'Why L-Bridge?',
+        'features.title': 'Why B-Bridge?',
         'features.subtitles': 'Real-time Subtitles',
         'features.subtitles.desc': 'Instant transcription for every meeting.',
         'features.smart': 'Smart Replies',
@@ -66,7 +66,7 @@ const translations = {
         'hero.cta_sub': 'Incluye 15 Minutos de Traducción Instantánea al Mes',
         'hero.github': 'Estrella en GitHub',
 
-        'features.title': '¿Por qué L-Bridge?',
+        'features.title': '¿Por qué B-Bridge?',
         'features.subtitles': 'Subtítulos en Tiempo Real',
         'features.subtitles.desc': 'Transcripción instantánea para cada reunión.',
         'features.smart': 'Smart Replies',
