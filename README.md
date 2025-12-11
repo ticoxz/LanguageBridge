@@ -97,6 +97,15 @@ graph LR
 | **Backend** | Python, FastAPI, Google Cloud STT, Gemini AI |
 | **Web** | Next.js 14, Tailwind CSS, Framer Motion |
 
+### Data Flow
+
+1. **Audio Capture**: Extension captures microphone via `getUserMedia`.
+2. **Processing**: Downsamples to 16kHz PCM, converts to 16-bit.
+3. **Streaming**: Sends audio chunks via WebSocket (`wss://`).
+4. **Transcription**: Google Cloud STT processes in real-time.
+5. **Context**: Gemini AI analyzes transcript for translation/summaries.
+6. **Display**: Results shown in overlay UI via React Portal.
+
 ---
 
 ## 🗺️ Roadmap
