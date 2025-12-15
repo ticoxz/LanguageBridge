@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { MessageSquare, X, Mic, MicOff } from 'lucide-react';
+import { MessageSquare, X, Mic, MicOff, Loader2 } from 'lucide-react';
 
 interface OverlayProps {
     transcript: string;
     translation: string;
     replies: string[];
     isListening: boolean;
+    isTranslating: boolean;
     onToggleListening: () => void;
     onReplyClick: (reply: string) => void;
 }
@@ -15,10 +16,19 @@ const Overlay: React.FC<OverlayProps> = ({
     translation,
     replies,
     isListening,
+    isTranslating,
     onToggleListening,
     onReplyClick
 }) => {
     const [minimized, setMinimized] = useState(false);
+
+    // Inline style for rotation animation
+    const spinStyle = `
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    `;
 
     if (minimized) {
         return (
@@ -57,23 +67,27 @@ const Overlay: React.FC<OverlayProps> = ({
             overflow: 'hidden',
             border: '1px solid #3c4043'
         }}>
+            <style>{spinStyle}</style>
+
             {/* Header */}
             <div style={{
                 padding: '12px 16px',
-                background: '#303134',
+                background: '#1a1a1a', // Darker background
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                borderBottom: '1px solid #3c4043'
+                borderBottom: '1px solid #333'
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ fontWeight: 700, fontSize: '15px', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>B-Bridge</span>
+                    <div style={{ fontSize: '18px' }}>🍌</div>
+                    <span style={{ fontWeight: 800, fontSize: '16px', color: '#FFE135', letterSpacing: '0.5px' }}>B-Bridge</span>
                     <div style={{
                         width: '8px',
                         height: '8px',
                         borderRadius: '50%',
                         background: isListening ? '#34a853' : '#ea4335',
-                        boxShadow: isListening ? '0 0 8px #34a853' : 'none'
+                        boxShadow: isListening ? '0 0 8px #34a853' : 'none',
+                        marginLeft: '8px'
                     }} />
                 </div>
                 <div style={{ display: 'flex', gap: '8px' }}>
@@ -102,11 +116,18 @@ const Overlay: React.FC<OverlayProps> = ({
 
                 {/* Translation */}
                 <div style={{ fontSize: '16px', fontWeight: 500, minHeight: '40px' }}>
-                    {translation || "..."}
+                    {isTranslating ? (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#FFE135' }}>
+                            <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} />
+                            <span>Translating...</span>
+                        </div>
+                    ) : (
+                        translation || "..."
+                    )}
                 </div>
 
                 {/* Smart Replies */}
-                {replies.length > 0 && (
+                {replies.length > 0 && !isTranslating && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '8px' }}>
                         <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5f6368', fontWeight: 700 }}>Smart Replies</span>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
@@ -115,9 +136,9 @@ const Overlay: React.FC<OverlayProps> = ({
                                     key={idx}
                                     onClick={() => onReplyClick(reply)}
                                     style={{
-                                        background: 'rgba(138, 180, 248, 0.24)',
-                                        color: '#8ab4f8',
-                                        border: 'none',
+                                        background: 'rgba(255, 225, 53, 0.15)',
+                                        color: '#FFE135',
+                                        border: '1px solid rgba(255, 225, 53, 0.3)',
                                         borderRadius: '16px',
                                         padding: '6px 12px',
                                         fontSize: '12px',

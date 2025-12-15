@@ -12,8 +12,8 @@ print(f"API Key found: {'Yes' if api_key else 'No'}")
 if api_key:
     genai.configure(api_key=api_key)
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash')
-        print("Sending request to Gemini...")
+        model = genai.GenerativeModel('gemini-flash-latest')
+        print("Sending request to Gemini (gemini-flash-latest)...")
         response = model.generate_content("Say 'Hello' in Spanish.")
         print(f"✅ Success! Response: {response.text}")
     except Exception as e:

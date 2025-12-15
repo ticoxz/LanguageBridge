@@ -9,6 +9,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Configure logging to file
+logging.basicConfig(
+    filename='backend.log',
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    force=True
+)
+
 app = FastAPI(title="LanguageBridge API")
 
 app.add_middleware(
@@ -87,33 +95,36 @@ async def audio_stream(websocket: WebSocket, user_id: str = Query(..., descripti
                     # Count words to avoid wasting API calls on short phrases
                     word_count = len(transcript.strip().split())
                     
-                    if word_count >= 5:
-                        async def run_translation(text_to_translate):
+                    if word_count >= 2:
+                        async def run_translation_flow(text_to_translate):
                             try:
-                                print(f"DEBUG: Starting translation for: {text_to_translate[:50]}... ({word_count} words)", flush=True)
-                                analysis = await assistant.generate_replies(text_to_translate)
-                                print(f"DEBUG: Translation received: {analysis}", flush=True)
+                                print(f"DEBUG: Starting parallel/split flow for: {text_to_translate[:50]}...", flush=True)
+
+                                # 1. Translation Priority Task
+                                trans_res = await assistant.translate_text(text_to_translate)
+                                if websocket.client_state.name == "CONNECTED":
+                                    await websocket.send_json({
+                                        "type": "translation_only",
+                                        "original": text_to_translate,
+                                        "translation": trans_res.get("translation", "")
+                                    })
                                 
-                                # Check if WebSocket is still open
-                                if websocket.client_state.name != "CONNECTED":
-                                    print("DEBUG: WebSocket closed, skipping translation send", flush=True)
-                                    return
-                                
-                                await websocket.send_json({
-                                    "type": "translation",
-                                    "original": text_to_translate,
-                                    "translation": analysis.get("translation", ""),
-                                    "replies": analysis.get("replies", [])
-                                })
-                                print("DEBUG: Translation sent successfully", flush=True)
+                                # 2. Replies Secondary Task
+                                replies_res = await assistant.generate_smart_replies(text_to_translate)
+                                if websocket.client_state.name == "CONNECTED":
+                                    await websocket.send_json({
+                                        "type": "replies_only",
+                                        "replies": replies_res.get("replies", [])
+                                    })
+
                             except Exception as e:
-                                print(f"Translation task error: {e}", flush=True)
+                                print(f"Translation flow error: {e}", flush=True)
                                 import traceback
                                 traceback.print_exc()
 
-                        asyncio.create_task(run_translation(transcript))
+                        asyncio.create_task(run_translation_flow(transcript))
                     else:
-                        print(f"DEBUG: Skipping translation for short phrase ({word_count} words): {transcript}", flush=True)
+                        print(f"DEBUG: Skipping translation for short phrase ({word_count} words)", flush=True)
 
         transcription_task = asyncio.create_task(process_transcription())
 
@@ -138,11 +149,14 @@ async def audio_stream(websocket: WebSocket, user_id: str = Query(..., descripti
             await audio_queue.put(data)
 
     except WebSocketDisconnect:
-        print(f"Client disconnected: {user_id}")
+        logging.info(f"Client disconnected: {user_id}")
     except Exception as e:
-        print(f"Connection error: {e}")
+        logging.error(f"Connection error: {type(e).__name__}: {e}")
+        import traceback
+        logging.error(traceback.format_exc())
     finally:
         # Cleanup
+        logging.info(f"DEBUG: Entering finally block for user: {user_id}")
         usage_manager.end_session(user_id)
         await audio_queue.put(None) # Signal generator to stop
         if transcription_task:

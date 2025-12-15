@@ -12,6 +12,7 @@ const ContentApp: React.FC = () => {
     const [translation, setTranslation] = useState('');
     const [replies, setReplies] = useState<string[]>([]);
     const [isListening, setIsListening] = useState(false);
+    const [isTranslating, setIsTranslating] = useState(false);
 
     const wsRef = useRef<WebSocket | null>(null);
     const audioContextRef = useRef<AudioContext | null>(null);
@@ -55,8 +56,18 @@ const ContentApp: React.FC = () => {
 
                 if (data.type === 'transcript') {
                     setTranscript(data.text);
+                    if (data.is_final) {
+                        setIsTranslating(true);
+                    }
                 } else if (data.type === 'translation') {
                     setTranslation(data.translation);
+                    setReplies(data.replies || []);
+                    setIsTranslating(false);
+                } else if (data.type === 'translation_only') {
+                    setTranslation(data.translation);
+                    setIsTranslating(false);
+                } else if (data.type === 'replies_only') {
+                    console.log("Received replies:", data.replies);
                     setReplies(data.replies || []);
                 }
             };
@@ -225,6 +236,7 @@ const ContentApp: React.FC = () => {
             translation={translation}
             replies={replies}
             isListening={isListening}
+            isTranslating={isTranslating}
             onToggleListening={toggleListening}
             onReplyClick={handleReplyClick}
         />

@@ -3,10 +3,13 @@ import time
 import asyncio
 import queue
 import threading
+import logging
 from typing import AsyncGenerator
 from google.cloud import speech
 import google.generativeai as genai
 from collections import defaultdict
+
+logger = logging.getLogger(__name__)
 
 class UsageManager:
     """Tracks usage per session/user to enforce limits."""
@@ -58,17 +61,17 @@ class Transcriber:
         # Feed queue from async generator
         async def feed_queue():
             count = 0
-            print("DEBUG: Queue feeder started", flush=True)
+            logger.debug("DEBUG: Queue feeder started")
             try:
                 async for content in audio_generator:
                     count += 1
                     bridge_queue.put(content)
                     if count % 50 == 0:
-                        print(f"DEBUG: Fed {count} chunks", flush=True)
-                print("DEBUG: Audio generator done", flush=True)
+                        logger.debug(f"DEBUG: Fed {count} chunks")
+                logger.debug("DEBUG: Audio generator done")
                 bridge_queue.put(None)
             except Exception as e:
-                print(f"Feeder error: {e}", flush=True)
+                logger.error(f"Feeder error: {e}")
                 bridge_queue.put(None)
         
         feeder_task = asyncio.create_task(feed_queue())
@@ -76,11 +79,11 @@ class Transcriber:
         session_done = {"value": False}
         
         def transcribe_thread():
-            print("DEBUG: Transcribe thread started", flush=True)
+            logger.debug("DEBUG: Transcribe thread started")
             
             while not session_done["value"]:
                 try:
-                    print("DEBUG: Starting Google Speech stream...", flush=True)
+                    logger.debug("DEBUG: Starting Google Speech stream...")
                     
                     def request_gen():
                         while True:
@@ -101,20 +104,20 @@ class Transcriber:
                         requests=request_gen()
                     )
                     
-                    print("DEBUG: Waiting for responses...", flush=True)
+                    logger.debug("DEBUG: Waiting for responses...")
                     count = 0
                     for response in responses:
                         count += 1
                         if count % 10 == 0:
-                            print(f"DEBUG: Got {count} responses", flush=True)
+                            logger.debug(f"DEBUG: Got {count} responses")
                         loop.call_soon_threadsafe(result_queue.put_nowait, response)
                     
-                    print(f"DEBUG: Stream ended ({count} responses)", flush=True)
+                    logger.debug(f"DEBUG: Stream ended ({count} responses)")
                     
                 except Exception as e:
-                    print(f"DEBUG: Stream error: {e}", flush=True)
-                    import traceback
-                    traceback.print_exc()
+                    logger.error(f"DEBUG: Stream error: {e}")
+                    # import traceback
+                    # traceback.print_exc()
                     time.sleep(1)
                     if session_done["value"]:
                         break
@@ -162,49 +165,53 @@ class SmartAssistant:
     def __init__(self, api_key: str = None):
         if api_key:
             genai.configure(api_key=api_key)
-            # gemini-pro has separate quota from flash models
-            self.model = genai.GenerativeModel('gemini-pro')
+            # Using gemini-flash-latest which is confirmed working in tests
+            self.model = genai.GenerativeModel('gemini-flash-latest')
             self.active = True
         else:
-            print("Warning: No Gemini API Key provided.")
+            logger.warning("Warning: No Gemini API Key provided.")
             self.active = False
 
-    async def generate_replies(self, text: str, target_lang: str = "auto"):
+    async def translate_text(self, text: str) -> dict:
+        """Optimized for speed: Only translation."""
         if not self.active:
-            return {
-                "translation": f"[Mock] {text}",
-                "replies": ["Ok", "Tell me more", "Next"]
-            }
+            return {"translation": f"[Mock] {text}"}
 
-        # Auto-detect language and translate to opposite
         prompt = f"""
-        Analyze the following text and:
-        1. Detect if it's in Spanish or English
-        2. If Spanish, translate to English
-        3. If English, translate to Spanish
-        4. Provide 3 short, professional smart replies in the SAME language as the input
-        
-        Input Text: "{text}"
-        
-        Output Format (JSON):
-        {{
-            "detected_language": "es" or "en",
-            "translation": "Translated text here",
-            "replies": ["Reply 1", "Reply 2", "Reply 3"]
-        }}
+        Task: Translate (ES<->EN).
+        Input: "{text}"
+        Output JSON: {{"detected_language": "es|en", "translation": "text"}}
         """
-        
+        return await self._call_gemini(prompt, default={"translation": f"[Error] {text}"})
+
+    async def generate_smart_replies(self, text: str) -> dict:
+        """Generate replies separately."""
+        if not self.active:
+            return {"replies": ["Mock R1", "Mock R2"]}
+
+        prompt = f"""
+        Task: 2 short smart replies (max 5 words, match input lang).
+        Input: "{text}"
+        Output JSON: {{"replies": ["r1", "r2"]}}
+        """
+        return await self._call_gemini(prompt, default={"replies": []})
+
+    async def _call_gemini(self, prompt: str, default: dict) -> dict:
         try:
             response = await self.model.generate_content_async(prompt)
             import json
-            text_resp = response.text.strip()
+            
+            try:
+                text_resp = response.text.strip()
+            except ValueError:
+                if response.candidates and response.candidates[0].content.parts:
+                    text_resp = "".join([p.text for p in response.candidates[0].content.parts]).strip()
+                else:
+                    raise ValueError("Empty response")
+
             if text_resp.startswith("```json"):
                 text_resp = text_resp[7:-3]
-            data = json.loads(text_resp)
-            return data
+            return json.loads(text_resp)
         except Exception as e:
-            print(f"LLM Error: {e}")
-            return {
-                "translation": f"[Error] {text}",
-                "replies": ["Error"]
-            }
+            logger.error(f"Gemini Error: {e}")
+            return default

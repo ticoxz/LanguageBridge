@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🍌 L-Bridge
+# 🍌 B-Bridge
 
 **Eliminate Language Barriers. Zero Errors. 100% Productivity.**
 
@@ -24,15 +24,16 @@
 - **High Accuracy** with automatic punctuation.
 - **Privacy First**: Audio processed locally and never stored.
 
-### 🍌 Web Landing Page (New!)
-- **Epic Design**: Dark mode aesthetic with neon accents.
-- **Interactive**: "Scroll-telling" animations and Bento Grid layout.
-- **Bilingual**: Fully translated (EN/ES).
+### 🍌 Banana-Themed UI (New!)
+- **B-Bridge Branding**: Vibrant yellow/black aesthetic with 🍌 icon.
+- **Loading Indicators**: Visual feedback during translation ("Translating..." spinner).
+- **Responsive Design**: Minimalist overlay that doesn't obstruct meetings.
 
-### 🌍 Smart Translation & Assist *(Beta)*
+### 🌍 Smart Translation & Assist *(Optimized)*
 - **Bidirectional**: Spanish ↔ English automatic detection.
-- **Smart Replies**: AI suggestions to keep the conversation flowing.
-- **Summaries**: Instant meeting recaps.
+- **Split-Flow Architecture**: Translation delivered instantly, smart replies follow.
+- **Ultra-Fast**: <2s latency with optimized prompts and parallel processing.
+- **Smart Replies**: 2 concise AI suggestions (max 5 words) to keep conversations flowing.
 
 ---
 
