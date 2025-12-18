@@ -51,6 +51,16 @@
   - Example: "→ María: I agree with your proposal"
 - **One-Click Copy**: Click any reply to copy to clipboard
 
+### 🎨 Premium UI/UX
+- **Glassmorphism Design**: Backdrop blur with translucent backgrounds
+- **Drag & Drop**: Move overlay anywhere on screen
+  - **Lock/Unlock**: 🔒 button to prevent accidental movement
+  - **Smart Constraints**: Can't drag outside viewport
+- **Position Presets**: Top/Bottom Left/Right + Center
+- **Minimized Mode**: Floating "🍌 B-Bridge" button
+- **Framer Motion**: Smooth animations throughout
+- **High Contrast**: Optimized for readability over video calls
+
 ### 📝 Meeting Summary
 - **Instant Summaries**: Generate bullet-point summaries of entire conversations
 - **Speaker Attribution**: Summaries include who said what (when speaker names assigned)
