@@ -1,0 +1,264 @@
+2025-12-18 19:03:21,510 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:03:21,580 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:03:21,580 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:03:21,580 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:03:25,934 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 19:03:27,653 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:03:30,207 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-18 19:03:32,603 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2289906087648
+2025-12-18 19:03:32,603 - grpc._cython.cygrpc - DEBUG - Using AsyncIOEngine.POLLER as I/O engine
+2025-12-18 19:03:32,604 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2289906087648
+2025-12-18 19:03:32,605 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2289906087648
+2025-12-18 19:03:32,605 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2289906087648
+2025-12-18 19:03:34,464 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-18 19:03:38,734 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-18 19:03:41,353 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:03:41,353 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:03:41,353 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:03:41,565 - services - DEBUG - DEBUG: Stream ended (5 responses)
+2025-12-18 19:03:44,220 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:03:44,260 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:03:44,260 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:03:44,260 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:03:48,585 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 19:03:52,034 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:03:52,035 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:03:52,035 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:03:52,215 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:03:52,215 - services - DEBUG - DEBUG: Stream ended (0 responses)
+2025-12-18 19:03:55,143 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:03:55,183 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:03:55,183 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:03:55,184 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:03:59,515 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 19:04:01,642 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:04:01,643 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:04:01,644 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:04:01,836 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:04:01,836 - services - DEBUG - DEBUG: Stream ended (0 responses)
+2025-12-18 19:04:02,669 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:04:02,707 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:04:02,707 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:04:02,707 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:04:06,552 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:04:07,035 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 19:04:08,162 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2289906087648
+2025-12-18 19:04:08,162 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2289906087648
+2025-12-18 19:04:11,305 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-18 19:04:14,153 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:04:14,153 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:04:14,154 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:04:14,358 - services - DEBUG - DEBUG: Stream ended (9 responses)
+2025-12-18 19:04:15,684 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:04:15,718 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:04:15,718 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:04:15,718 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:04:20,065 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 19:04:24,335 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-18 19:04:24,428 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:04:24,428 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:04:24,429 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:04:24,600 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:04:24,600 - services - DEBUG - DEBUG: Stream ended (0 responses)
+2025-12-18 19:08:39,517 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:08:39,581 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:08:39,581 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:08:39,581 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:08:43,912 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 19:08:46,163 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:08:48,183 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-18 19:08:51,442 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-18 19:08:52,443 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-18 19:08:56,216 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-18 19:08:56,713 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-18 19:08:59,995 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-18 19:09:00,983 - services - DEBUG - DEBUG: Fed 250 chunks
+2025-12-18 19:09:01,171 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2354883917536
+2025-12-18 19:09:01,171 - grpc._cython.cygrpc - DEBUG - Using AsyncIOEngine.POLLER as I/O engine
+2025-12-18 19:09:01,172 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2354883917536
+2025-12-18 19:09:01,173 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2354883917536
+2025-12-18 19:09:01,173 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2354883917536
+2025-12-18 19:09:02,792 - services - DEBUG - DEBUG: Got 40 responses
+2025-12-18 19:09:04,572 - services - DEBUG - DEBUG: Got 50 responses
+2025-12-18 19:09:05,243 - services - DEBUG - DEBUG: Fed 300 chunks
+2025-12-18 19:09:06,367 - services - DEBUG - DEBUG: Got 60 responses
+2025-12-18 19:09:08,776 - services - DEBUG - DEBUG: Got 70 responses
+2025-12-18 19:09:09,511 - services - DEBUG - DEBUG: Fed 350 chunks
+2025-12-18 19:09:12,120 - services - DEBUG - DEBUG: Got 80 responses
+2025-12-18 19:09:13,466 - services - DEBUG - DEBUG: Got 90 responses
+2025-12-18 19:09:13,774 - services - DEBUG - DEBUG: Fed 400 chunks
+2025-12-18 19:09:15,250 - services - DEBUG - DEBUG: Got 100 responses
+2025-12-18 19:09:17,387 - services - DEBUG - DEBUG: Got 110 responses
+2025-12-18 19:09:18,043 - services - DEBUG - DEBUG: Fed 450 chunks
+2025-12-18 19:09:18,658 - services - DEBUG - DEBUG: Got 120 responses
+2025-12-18 19:09:21,008 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2354883917536
+2025-12-18 19:09:21,008 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2354883917536
+2025-12-18 19:09:22,303 - services - DEBUG - DEBUG: Fed 500 chunks
+2025-12-18 19:09:26,575 - services - DEBUG - DEBUG: Fed 550 chunks
+2025-12-18 19:09:30,843 - services - DEBUG - DEBUG: Fed 600 chunks
+2025-12-18 19:09:31,792 - root - DEBUG - DEBUG: Generating summary request
+2025-12-18 19:09:31,793 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2354883917536
+2025-12-18 19:09:34,822 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:09:34,822 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:09:34,823 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:09:35,783 - services - DEBUG - DEBUG: Stream ended (128 responses)
+2025-12-18 19:09:53,992 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:09:54,027 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:09:54,027 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:09:54,027 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:09:55,785 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:09:57,831 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-18 19:09:58,342 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 19:09:59,451 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-18 19:10:02,613 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-18 19:10:02,714 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-18 19:10:05,534 - services - DEBUG - DEBUG: Got 40 responses
+2025-12-18 19:10:06,871 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-18 19:10:07,221 - services - DEBUG - DEBUG: Got 50 responses
+2025-12-18 19:10:08,534 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2354883917536
+2025-12-18 19:10:08,535 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2354883917536
+2025-12-18 19:10:11,141 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-18 19:10:15,412 - services - DEBUG - DEBUG: Fed 250 chunks
+2025-12-18 19:10:19,672 - services - DEBUG - DEBUG: Fed 300 chunks
+2025-12-18 19:10:23,944 - services - DEBUG - DEBUG: Fed 350 chunks
+2025-12-18 19:10:28,179 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:10:28,179 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:10:28,180 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:10:28,681 - services - DEBUG - DEBUG: Stream ended (58 responses)
+2025-12-18 19:12:57,034 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:12:57,075 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:12:57,075 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:12:57,075 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:12:58,088 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:13:01,062 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-18 19:13:01,474 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 19:13:02,762 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-18 19:13:05,744 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-18 19:13:06,440 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-18 19:13:09,335 - services - DEBUG - DEBUG: Got 40 responses
+2025-12-18 19:13:10,013 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-18 19:13:14,275 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-18 19:13:15,681 - services - DEBUG - DEBUG: Got 50 responses
+2025-12-18 19:13:18,544 - services - DEBUG - DEBUG: Fed 250 chunks
+2025-12-18 19:13:20,616 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2354883917536
+2025-12-18 19:13:20,616 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2354883917536
+2025-12-18 19:13:22,814 - services - DEBUG - DEBUG: Fed 300 chunks
+2025-12-18 19:13:27,075 - services - DEBUG - DEBUG: Fed 350 chunks
+2025-12-18 19:13:31,335 - services - DEBUG - DEBUG: Fed 400 chunks
+2025-12-18 19:13:35,605 - services - DEBUG - DEBUG: Fed 450 chunks
+2025-12-18 19:13:38,535 - root - DEBUG - DEBUG: Generating summary request
+2025-12-18 19:13:38,536 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2354883917536
+2025-12-18 19:13:41,193 - root - ERROR - Text message error: 
+2025-12-18 19:13:41,193 - services - DEBUG - DEBUG: Fed 500 chunks
+2025-12-18 19:13:41,196 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:13:41,196 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:13:41,196 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:13:41,699 - services - DEBUG - DEBUG: Stream ended (52 responses)
+2025-12-18 19:15:25,076 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:15:25,111 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:15:25,111 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:15:25,111 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:15:25,167 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:15:25,167 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:15:25,167 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:15:25,865 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:15:25,865 - services - DEBUG - DEBUG: Stream ended (0 responses)
+2025-12-18 19:16:46,147 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:16:46,195 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:16:46,195 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:16:46,195 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:16:48,917 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:16:49,337 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-18 19:16:50,517 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 19:16:50,800 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1597072668384
+2025-12-18 19:16:50,800 - grpc._cython.cygrpc - DEBUG - Using AsyncIOEngine.POLLER as I/O engine
+2025-12-18 19:16:50,800 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1597072668384
+2025-12-18 19:16:50,800 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1597072668384
+2025-12-18 19:16:50,800 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1597072668384
+2025-12-18 19:16:54,787 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-18 19:16:59,047 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-18 19:17:03,316 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-18 19:17:05,380 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-18 19:17:06,394 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1597072668384
+2025-12-18 19:17:06,394 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1597072668384
+2025-12-18 19:17:07,588 - services - DEBUG - DEBUG: Fed 250 chunks
+2025-12-18 19:17:11,848 - services - DEBUG - DEBUG: Fed 300 chunks
+2025-12-18 19:17:13,431 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:17:13,432 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:17:13,432 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:17:13,682 - services - DEBUG - DEBUG: Stream ended (23 responses)
+2025-12-18 19:18:51,867 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:18:51,911 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:18:51,911 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:18:51,911 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:18:54,479 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:18:55,311 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-18 19:18:56,227 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 19:18:56,742 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-18 19:18:58,126 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-18 19:18:59,399 - services - DEBUG - DEBUG: Got 40 responses
+2025-12-18 19:19:00,496 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-18 19:19:01,694 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1597072668384
+2025-12-18 19:19:01,695 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1597072668384
+2025-12-18 19:19:02,015 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 58.582025996s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 58
+}
+]
+2025-12-18 19:19:02,800 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 57.772142852s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 57
+}
+]
+2025-12-18 19:19:04,767 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-18 19:19:07,511 - services - DEBUG - DEBUG: Got 50 responses
+2025-12-18 19:19:09,028 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-18 19:19:12,634 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:19:12,634 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:19:12,635 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:19:13,051 - services - DEBUG - DEBUG: Stream ended (50 responses)
+2025-12-18 19:26:59,163 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:26:59,205 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:26:59,205 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:26:59,205 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:26:59,698 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:26:59,698 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:26:59,698 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:26:59,987 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:26:59,987 - services - DEBUG - DEBUG: Stream ended (0 responses)

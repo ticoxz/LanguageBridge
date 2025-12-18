@@ -1,18 +1,26 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Overlay from '../components/Overlay';
-
-const WS_URL = 'ws://localhost:8080/ws/audio';
+import { useSettings } from '../hooks/useSettings';
 
 interface ScriptProcessorNodeWithMonitor extends ScriptProcessorNode {
     _monitorInterval?: NodeJS.Timeout;
 }
 
 const ContentApp: React.FC = () => {
+    const { settings, updateSettings } = useSettings();
     const [transcript, setTranscript] = useState('');
     const [translation, setTranslation] = useState('');
     const [replies, setReplies] = useState<string[]>([]);
     const [isListening, setIsListening] = useState(false);
     const [isTranslating, setIsTranslating] = useState(false);
+
+    const [summary, setSummary] = useState('');
+    const [isSummaryOpen, setIsSummaryOpen] = useState(false);
+
+    // Speaker diarization state (TODO: integrate with UI)
+    // const [detectedSpeakers, setDetectedSpeakers] = useState<number[]>([]);
+    // const [speakerNames, setSpeakerNames] = useState<Record<number, string>>({});
+    // const [isSpeakerModalOpen, setIsSpeakerModalOpen] = useState(false);
 
     const wsRef = useRef<WebSocket | null>(null);
     const audioContextRef = useRef<AudioContext | null>(null);
@@ -23,6 +31,16 @@ const ContentApp: React.FC = () => {
     useEffect(() => {
         const userId = localStorage.getItem('lb_user_id') || `user_${Math.random().toString(36).substr(2, 9)}`;
         localStorage.setItem('lb_user_id', userId);
+
+        // TODO: Load speaker names from localStorage when UI is ready
+        // const storedNames = localStorage.getItem('lb_speaker_names');
+        // if (storedNames) {
+        //     try {
+        //         setSpeakerNames(JSON.parse(storedNames));
+        //     } catch (e) {
+        //         console.error('Failed to parse speaker names:', e);
+        //     }
+        // }
 
         return () => {
             stopListening();
@@ -36,7 +54,8 @@ const ContentApp: React.FC = () => {
             }
 
             const userId = localStorage.getItem('lb_user_id');
-            wsRef.current = new WebSocket(`${WS_URL}?user_id=${userId}`);
+            const wsUrl = `${settings.backendUrl}/ws/audio?user_id=${userId}`;
+            wsRef.current = new WebSocket(wsUrl);
 
             wsRef.current.onopen = () => {
                 console.log('✅ WebSocket OPEN - Ready to send audio');
@@ -64,11 +83,23 @@ const ContentApp: React.FC = () => {
                     setReplies(data.replies || []);
                     setIsTranslating(false);
                 } else if (data.type === 'translation_only') {
-                    setTranslation(data.translation);
+                    // Check if it's a quota error
+                    if (data.translation && typeof data.translation === 'object' && data.translation.error === 'QUOTA_EXCEEDED') {
+                        setTranslation(`⚠️ ${data.translation.message}`);
+                    } else {
+                        setTranslation(data.translation);
+                    }
                     setIsTranslating(false);
                 } else if (data.type === 'replies_only') {
                     console.log("Received replies:", data.replies);
+                    if (data.replies && data.replies.error === 'QUOTA_EXCEEDED') {
+                        return;
+                    }
                     setReplies(data.replies || []);
+                } else if (data.type === 'summary') {
+                    setSummary(data.summary);
+                    setIsSummaryOpen(true);
+                    stopListening(); // Stop listening when summary is received/requested
                 }
             };
 
@@ -79,9 +110,13 @@ const ContentApp: React.FC = () => {
 
             wsRef.current.onclose = (event) => {
                 console.log("WebSocket Closed:", event.code, event.reason);
+                // Only show error for abnormal closures (not 1000 normal, not 1005 no status)
+                if (event.code !== 1000 && event.code !== 1005) {
+                    setTranscript(`❌ Disconnected: Code ${event.code} - ${event.reason || "Unknown error"}`);
+                }
+                setIsListening(false);
             };
 
-            // Timeout after 5 seconds
             setTimeout(() => reject(new Error("WebSocket connection timeout")), 5000);
         });
     };
@@ -122,13 +157,10 @@ const ContentApp: React.FC = () => {
     const startListening = async () => {
         try {
             setIsListening(true);
-
-            // CRITICAL FIX: Wait for WebSocket to be fully OPEN before audio setup
             console.log("🔌 Connecting WebSocket...");
             await setupWebSocket();
             console.log("🎤 WebSocket ready, starting audio capture...");
 
-            // Now setup audio
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
             streamRef.current = stream;
 
@@ -152,6 +184,15 @@ const ContentApp: React.FC = () => {
 
                 if (streamRef.current && !streamRef.current.active) {
                     console.warn("Monitor: Stream inactive!");
+                }
+
+                // Send keepalive ping to prevent WebSocket timeout
+                if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+                    try {
+                        wsRef.current.send(JSON.stringify({ type: 'ping' }));
+                    } catch (e) {
+                        console.error("Ping failed:", e);
+                    }
                 }
             }, 1000);
 
@@ -210,6 +251,9 @@ const ContentApp: React.FC = () => {
         audioContextRef.current?.close();
 
         if (wsRef.current) {
+            // Do NOT close here if we want to receive the summary, but user requested stop.
+            // Actually, for now, we close it, but if requesting summary we might need it open.
+            // Let's rely on handleRequestSummary to handle the flow.
             wsRef.current.close();
             wsRef.current = null;
         }
@@ -227,7 +271,15 @@ const ContentApp: React.FC = () => {
 
     const handleReplyClick = (reply: string) => {
         navigator.clipboard.writeText(reply);
-        alert(`Copied: "${reply}"`);
+        // alert(`Copied: "${reply}"`); // Removed alert for smoother UX
+    };
+
+    const handleRequestSummary = () => {
+        if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+            wsRef.current.send(JSON.stringify({ type: 'request_summary' }));
+            // We don't stop listening immediately here, we wait for the summary response to close connection
+            // But we can pause audio capture? For simplicity, let's keep it running until response.
+        }
     };
 
     return (
@@ -237,8 +289,14 @@ const ContentApp: React.FC = () => {
             replies={replies}
             isListening={isListening}
             isTranslating={isTranslating}
+            settings={settings}
+            onUpdateSettings={updateSettings}
             onToggleListening={toggleListening}
             onReplyClick={handleReplyClick}
+            summary={summary}
+            isSummaryOpen={isSummaryOpen}
+            onRequestSummary={handleRequestSummary}
+            onCloseSummary={() => setIsSummaryOpen(false)}
         />
     );
 };

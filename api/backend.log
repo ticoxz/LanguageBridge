@@ -873,3 +873,596 @@ RuntimeError: Cannot call "receive" once a disconnect message has been received.
 2025-12-15 10:49:15,671 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
 2025-12-15 10:49:15,671 - services - DEBUG - DEBUG: Audio generator done
 2025-12-15 10:49:16,610 - services - DEBUG - DEBUG: Stream ended (108 responses)
+2025-12-15 11:46:42,350 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-15 11:46:42,387 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-15 11:46:42,387 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-15 11:46:42,387 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-15 11:46:45,349 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-15 11:46:46,699 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-15 11:46:48,844 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-15 11:46:50,899 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-15 11:46:50,969 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-15 11:46:52,016 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-15 11:46:53,309 - services - DEBUG - DEBUG: Got 40 responses
+2025-12-15 11:46:54,912 - services - DEBUG - DEBUG: Got 50 responses
+2025-12-15 11:46:55,239 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-15 11:46:57,010 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2778690458384
+2025-12-15 11:46:59,499 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-15 11:47:00,893 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2778690458384
+2025-12-15 11:47:01,212 - services - ERROR - Gemini Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 77.025925ms. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+}
+]
+2025-12-15 11:47:03,769 - services - DEBUG - DEBUG: Fed 250 chunks
+2025-12-15 11:47:07,892 - services - DEBUG - DEBUG: Got 60 responses
+2025-12-15 11:47:08,039 - services - DEBUG - DEBUG: Fed 300 chunks
+2025-12-15 11:47:12,299 - services - DEBUG - DEBUG: Fed 350 chunks
+2025-12-15 11:47:16,560 - services - DEBUG - DEBUG: Fed 400 chunks
+2025-12-15 11:47:20,831 - services - DEBUG - DEBUG: Fed 450 chunks
+2025-12-15 11:47:25,102 - services - DEBUG - DEBUG: Fed 500 chunks
+2025-12-15 11:47:28,641 - root - ERROR - Connection error: RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2025-12-15 11:47:28,641 - root - ERROR - Traceback (most recent call last):
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\main.py", line 134, in audio_stream
+    message = await websocket.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tico\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+
+2025-12-15 11:47:28,641 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-15 11:47:28,641 - services - DEBUG - DEBUG: Audio generator done
+2025-12-15 11:47:29,159 - services - DEBUG - DEBUG: Stream ended (66 responses)
+2025-12-15 11:48:37,749 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-15 11:48:37,787 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-15 11:48:37,787 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-15 11:48:37,787 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-15 11:48:40,096 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-15 11:48:41,607 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-15 11:48:42,110 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-15 11:48:42,908 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-15 11:48:44,341 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-15 11:48:45,793 - services - DEBUG - DEBUG: Got 40 responses
+2025-12-15 11:48:46,381 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-15 11:48:46,640 - services - DEBUG - DEBUG: Got 50 responses
+2025-12-15 11:48:48,699 - services - DEBUG - DEBUG: Got 60 responses
+2025-12-15 11:48:49,798 - services - DEBUG - DEBUG: Got 70 responses
+2025-12-15 11:48:50,652 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-15 11:48:51,971 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2778690458384
+2025-12-15 11:48:54,920 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-15 11:48:57,917 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2778690458384
+2025-12-15 11:48:58,232 - services - ERROR - Gemini Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 3.053143285s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 3
+}
+]
+2025-12-15 11:48:59,182 - services - DEBUG - DEBUG: Fed 250 chunks
+2025-12-15 11:49:03,451 - services - DEBUG - DEBUG: Fed 300 chunks
+2025-12-15 11:49:07,722 - services - DEBUG - DEBUG: Fed 350 chunks
+2025-12-15 11:49:11,982 - services - DEBUG - DEBUG: Fed 400 chunks
+2025-12-15 11:49:16,243 - services - DEBUG - DEBUG: Fed 450 chunks
+2025-12-15 11:49:18,380 - root - ERROR - Connection error: RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2025-12-15 11:49:18,380 - root - ERROR - Traceback (most recent call last):
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\main.py", line 134, in audio_stream
+    message = await websocket.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tico\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+
+2025-12-15 11:49:18,381 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-15 11:49:18,381 - services - DEBUG - DEBUG: Audio generator done
+2025-12-15 11:49:18,781 - services - DEBUG - DEBUG: Stream ended (75 responses)
+2025-12-15 11:49:45,999 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-15 11:49:46,034 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-15 11:49:46,034 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-15 11:49:46,034 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-15 11:49:50,345 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-15 11:49:52,697 - root - ERROR - Connection error: RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2025-12-15 11:49:52,698 - root - ERROR - Traceback (most recent call last):
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\main.py", line 134, in audio_stream
+    message = await websocket.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tico\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+
+2025-12-15 11:49:52,698 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-15 11:49:52,699 - services - DEBUG - DEBUG: Audio generator done
+2025-12-15 11:49:52,886 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-15 11:49:52,886 - services - DEBUG - DEBUG: Stream ended (0 responses)
+2025-12-15 11:49:56,534 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-15 11:49:56,576 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-15 11:49:56,576 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-15 11:49:56,576 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-15 11:50:00,877 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-15 11:50:01,845 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-15 11:50:04,289 - root - ERROR - Connection error: RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2025-12-15 11:50:04,290 - root - ERROR - Traceback (most recent call last):
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\main.py", line 134, in audio_stream
+    message = await websocket.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tico\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+
+2025-12-15 11:50:04,290 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-15 11:50:04,290 - services - DEBUG - DEBUG: Audio generator done
+2025-12-15 11:50:04,567 - services - DEBUG - DEBUG: Stream ended (9 responses)
+2025-12-15 11:50:09,809 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-15 11:50:09,848 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-15 11:50:09,848 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-15 11:50:09,848 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-15 11:50:10,659 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-15 11:50:14,156 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-15 11:50:14,429 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-15 11:50:16,729 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-15 11:50:18,427 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-15 11:50:18,791 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-15 11:50:21,603 - services - DEBUG - DEBUG: Got 40 responses
+2025-12-15 11:50:22,697 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-15 11:50:22,735 - services - DEBUG - DEBUG: Got 50 responses
+2025-12-15 11:50:25,010 - services - DEBUG - DEBUG: Got 60 responses
+2025-12-15 11:50:26,957 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-15 11:50:27,251 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2778690458384
+2025-12-15 11:50:27,546 - services - ERROR - Gemini Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 33.74939708s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 33
+}
+]
+2025-12-15 11:50:27,546 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2778690458384
+2025-12-15 11:50:28,214 - services - ERROR - Gemini Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 33.055605558s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 33
+}
+]
+2025-12-15 11:50:31,228 - services - DEBUG - DEBUG: Fed 250 chunks
+2025-12-15 11:50:33,707 - root - ERROR - Connection error: RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2025-12-15 11:50:33,708 - root - ERROR - Traceback (most recent call last):
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\main.py", line 134, in audio_stream
+    message = await websocket.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tico\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+
+2025-12-15 11:50:33,708 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-15 11:50:33,708 - services - DEBUG - DEBUG: Audio generator done
+2025-12-15 11:50:34,075 - services - DEBUG - DEBUG: Stream ended (65 responses)
+2025-12-15 11:50:34,802 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-15 11:50:34,837 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-15 11:50:34,838 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-15 11:50:34,838 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-15 11:50:37,944 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-15 11:50:39,139 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-15 11:50:39,850 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-15 11:50:40,803 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2778690458384
+2025-12-15 11:50:41,077 - services - ERROR - Gemini Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 20.216199378s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 20
+}
+]
+2025-12-15 11:50:41,077 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2778690458384
+2025-12-15 11:50:41,920 - services - ERROR - Gemini Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 19.348505564s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 19
+}
+]
+2025-12-15 11:50:43,243 - root - ERROR - Connection error: RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2025-12-15 11:50:43,244 - root - ERROR - Traceback (most recent call last):
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\main.py", line 134, in audio_stream
+    message = await websocket.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tico\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+
+2025-12-15 11:50:43,244 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-15 11:50:43,244 - services - DEBUG - DEBUG: Audio generator done
+2025-12-15 11:50:43,465 - services - DEBUG - DEBUG: Stream ended (15 responses)
+2025-12-15 11:59:58,124 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-15 11:59:58,189 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-15 11:59:58,189 - root - ERROR - Connection error: RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2025-12-15 11:59:58,189 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-15 11:59:58,190 - root - ERROR - Traceback (most recent call last):
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\main.py", line 134, in audio_stream
+    message = await websocket.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tico\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+
+2025-12-15 11:59:58,191 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-15 11:59:58,191 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-15 11:59:58,191 - services - DEBUG - DEBUG: Audio generator done
+2025-12-15 11:59:58,613 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-15 11:59:58,613 - services - DEBUG - DEBUG: Stream ended (0 responses)
+2025-12-15 11:59:59,407 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-15 11:59:59,444 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-15 11:59:59,444 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-15 11:59:59,444 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-15 12:00:00,471 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-15 12:00:02,917 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-15 12:00:03,765 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-15 12:00:04,509 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776439497488
+2025-12-15 12:00:04,509 - grpc._cython.cygrpc - DEBUG - Using AsyncIOEngine.POLLER as I/O engine
+2025-12-15 12:00:04,510 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776439497488
+2025-12-15 12:00:04,511 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776439497488
+2025-12-15 12:00:05,652 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 55.661974423s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 55
+}
+]
+2025-12-15 12:00:05,652 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776439497488
+2025-12-15 12:00:05,932 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 55.383113419s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 55
+}
+]
+2025-12-15 12:00:08,036 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-15 12:00:11,749 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-15 12:00:12,306 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-15 12:00:14,115 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776439497488
+2025-12-15 12:00:15,174 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 46.117443165s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 46
+}
+]
+2025-12-15 12:00:15,175 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776439497488
+2025-12-15 12:00:15,478 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 45.832652003s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 45
+}
+]
+2025-12-15 12:00:16,566 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-15 12:00:19,204 - root - ERROR - Connection error: RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2025-12-15 12:00:19,205 - root - ERROR - Traceback (most recent call last):
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\main.py", line 134, in audio_stream
+    message = await websocket.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tico\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+
+2025-12-15 12:00:19,205 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-15 12:00:19,205 - services - DEBUG - DEBUG: Audio generator done
+2025-12-15 12:00:19,657 - services - DEBUG - DEBUG: Stream ended (23 responses)
+2025-12-15 12:02:12,210 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-15 12:02:12,244 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-15 12:02:12,244 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-15 12:02:12,245 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-15 12:02:12,246 - root - ERROR - Connection error: RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2025-12-15 12:02:12,247 - root - ERROR - Traceback (most recent call last):
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\main.py", line 134, in audio_stream
+    message = await websocket.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tico\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+
+2025-12-15 12:02:12,247 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-15 12:02:12,247 - services - DEBUG - DEBUG: Audio generator done
+2025-12-15 12:02:13,031 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-15 12:02:13,031 - services - DEBUG - DEBUG: Stream ended (0 responses)
+2025-12-15 12:02:17,291 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-15 12:02:17,350 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-15 12:02:17,350 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-15 12:02:17,350 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-15 12:02:19,826 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-15 12:02:21,677 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-15 12:02:23,656 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-15 12:02:25,395 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1839484736272
+2025-12-15 12:02:25,395 - grpc._cython.cygrpc - DEBUG - Using AsyncIOEngine.POLLER as I/O engine
+2025-12-15 12:02:25,395 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1839484736272
+2025-12-15 12:02:25,397 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1839484736272
+2025-12-15 12:02:25,938 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-15 12:02:26,437 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 34.856449319s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 34
+}
+]
+2025-12-15 12:02:26,438 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1839484736272
+2025-12-15 12:02:26,693 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 34.599214762s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 34
+}
+]
+2025-12-15 12:02:30,208 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-15 12:02:32,155 - root - ERROR - Connection error: RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2025-12-15 12:02:32,156 - root - ERROR - Traceback (most recent call last):
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\main.py", line 134, in audio_stream
+    message = await websocket.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tico\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+
+2025-12-15 12:02:32,156 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-15 12:02:32,156 - services - DEBUG - DEBUG: Audio generator done
+2025-12-15 12:02:32,450 - services - DEBUG - DEBUG: Stream ended (14 responses)
+2025-12-18 13:28:40,883 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 13:28:40,912 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 13:28:40,912 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 13:28:40,912 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 13:28:42,207 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 13:28:44,429 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-18 13:28:45,354 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 13:28:46,976 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-18 13:28:49,047 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-18 13:28:49,625 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-18 13:28:51,248 - services - DEBUG - DEBUG: Got 40 responses
+2025-12-18 13:28:53,317 - services - DEBUG - DEBUG: Got 50 responses
+2025-12-18 13:28:53,894 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-18 13:28:55,076 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1987034604048
+2025-12-18 13:28:55,076 - grpc._cython.cygrpc - DEBUG - Using AsyncIOEngine.POLLER as I/O engine
+2025-12-18 13:28:55,077 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1987034604048
+2025-12-18 13:28:55,078 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1987034604048
+2025-12-18 13:28:58,156 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-18 13:28:59,326 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1987034604048
+2025-12-18 13:29:02,426 - services - DEBUG - DEBUG: Fed 250 chunks
+2025-12-18 13:29:06,696 - services - DEBUG - DEBUG: Fed 300 chunks
+2025-12-18 13:29:10,956 - services - DEBUG - DEBUG: Fed 350 chunks
+2025-12-18 13:29:13,840 - root - ERROR - Connection error: RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2025-12-18 13:29:13,841 - root - ERROR - Traceback (most recent call last):
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\main.py", line 134, in audio_stream
+    message = await websocket.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\venv\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+
+2025-12-18 13:29:13,841 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 13:29:13,841 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 13:29:14,252 - services - DEBUG - DEBUG: Stream ended (56 responses)
+2025-12-18 13:31:52,311 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 13:31:52,314 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 13:31:52,314 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 13:31:52,314 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 13:31:54,264 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 13:31:56,646 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 13:31:57,091 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-18 13:31:59,147 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-18 13:32:00,691 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-18 13:32:00,915 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-18 13:32:02,404 - services - DEBUG - DEBUG: Got 40 responses
+2025-12-18 13:32:04,181 - services - DEBUG - DEBUG: Got 50 responses
+2025-12-18 13:32:05,185 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-18 13:32:05,532 - services - DEBUG - DEBUG: Got 60 responses
+2025-12-18 13:32:06,738 - services - DEBUG - DEBUG: Got 70 responses
+2025-12-18 13:32:08,188 - services - DEBUG - DEBUG: Got 80 responses
+2025-12-18 13:32:08,788 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1987034604048
+2025-12-18 13:32:09,456 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-18 13:32:11,404 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1987034604048
+2025-12-18 13:32:13,726 - services - DEBUG - DEBUG: Fed 250 chunks
+2025-12-18 13:32:17,988 - services - DEBUG - DEBUG: Fed 300 chunks
+2025-12-18 13:32:22,256 - services - DEBUG - DEBUG: Fed 350 chunks
+2025-12-18 13:32:26,517 - services - DEBUG - DEBUG: Fed 400 chunks
+2025-12-18 13:32:30,778 - services - DEBUG - DEBUG: Fed 450 chunks
+2025-12-18 13:32:35,048 - services - DEBUG - DEBUG: Fed 500 chunks
+2025-12-18 13:32:38,021 - root - ERROR - Connection error: RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2025-12-18 13:32:38,023 - root - ERROR - Traceback (most recent call last):
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\main.py", line 134, in audio_stream
+    message = await websocket.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tico\Desktop\SaaS\LanguageBridge\api\venv\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+
+2025-12-18 13:32:38,023 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 13:32:38,023 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 13:32:38,372 - services - DEBUG - DEBUG: Stream ended (81 responses)

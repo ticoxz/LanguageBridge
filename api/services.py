@@ -8,6 +8,7 @@ from typing import AsyncGenerator
 from google.cloud import speech
 import google.generativeai as genai
 from collections import defaultdict
+from cache_manager import translation_cache
 
 logger = logging.getLogger(__name__)
 
@@ -42,11 +43,21 @@ class Transcriber:
     def __init__(self, language_code: str = "es-ES"):
         self.client = speech.SpeechClient()
         self.language_code = language_code
+        
+        # Speaker diarization config
+        diarization_config = speech.SpeakerDiarizationConfig(
+            enable_speaker_diarization=True,
+            min_speaker_count=2,
+            max_speaker_count=6,
+        )
+        
         self.config = speech.RecognitionConfig(
             encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
             sample_rate_hertz=16000,
             language_code=self.language_code,
+            alternative_language_codes=["en-US"],  # Auto-detect Spanish or English
             enable_automatic_punctuation=True,
+            diarization_config=diarization_config,
         )
         self.streaming_config = speech.StreamingRecognitionConfig(
             config=self.config,
@@ -133,7 +144,7 @@ class Transcriber:
                 if item is None:
                     break
                 if isinstance(item, Exception):
-                    yield f"[Error: {item}]", True
+                    yield f"[Error: {item}]", True, None
                     break
                 
                 if not item.results:
@@ -144,7 +155,16 @@ class Transcriber:
                 
                 transcript = result.alternatives[0].transcript
                 is_final = result.is_final
-                yield transcript, is_final
+                
+                # Extract speaker tag (only available in final results with diarization)
+                speaker_tag = None
+                if is_final and hasattr(result.alternatives[0], 'words') and result.alternatives[0].words:
+                    # Get speaker tag from first word (all words in result have same speaker)
+                    first_word = result.alternatives[0].words[0]
+                    if hasattr(first_word, 'speaker_tag'):
+                        speaker_tag = first_word.speaker_tag
+                
+                yield transcript, is_final, speaker_tag
         finally:
             await feeder_task
             thread.join()
@@ -173,16 +193,33 @@ class SmartAssistant:
             self.active = False
 
     async def translate_text(self, text: str) -> dict:
-        """Optimized for speed: Only translation."""
+        """Optimized for speed: Only translation with caching."""
         if not self.active:
             return {"translation": f"[Mock] {text}"}
+
+        # Check cache first
+        cached = translation_cache.get(text)
+        if cached:
+            logger.debug(f"✅ Cache HIT for: {text[:30]}...")
+            return cached
 
         prompt = f"""
         Task: Translate (ES<->EN).
         Input: "{text}"
         Output JSON: {{"detected_language": "es|en", "translation": "text"}}
         """
-        return await self._call_gemini(prompt, default={"translation": f"[Error] {text}"})
+        result = await self._call_gemini(prompt, default={"translation": f"[Error] {text}"})
+        
+        # If quota error, wrap it in translation field for frontend
+        if "error" in result and result["error"] == "QUOTA_EXCEEDED":
+            return {"translation": f"⚠️ {result['message']}"}
+        
+        # Cache successful translations
+        if "translation" in result and not result.get("error"):
+            translation_cache.set(text, result)
+            logger.debug(f"💾 Cached translation for: {text[:30]}...")
+        
+        return result
 
     async def generate_smart_replies(self, text: str) -> dict:
         """Generate replies separately."""
@@ -195,6 +232,18 @@ class SmartAssistant:
         Output JSON: {{"replies": ["r1", "r2"]}}
         """
         return await self._call_gemini(prompt, default={"replies": []})
+
+    async def generate_summary(self, text: str) -> dict:
+        """Generate a session summary."""
+        if not self.active or not text:
+            return {"summary": "Summary unavailable (Mock/Empty)."}
+
+        prompt = f"""
+        Task: Brief bullet-point summary of this transcript (max 5 points).
+        Input: "{text[-3000:]}"  # Context limit check
+        Output JSON: {{"summary": "- Key point 1...\\n- Key point 2..."}}
+        """
+        return await self._call_gemini(prompt, default={"summary": "Could not generate summary."})
 
     async def _call_gemini(self, prompt: str, default: dict) -> dict:
         try:
@@ -213,5 +262,15 @@ class SmartAssistant:
                 text_resp = text_resp[7:-3]
             return json.loads(text_resp)
         except Exception as e:
+            error_msg = str(e)
+            
+            # Check if it's a quota/rate limit error
+            if "ResourceExhausted" in error_msg or "429" in error_msg or "quota" in error_msg.lower():
+                logger.error(f"Gemini Quota Exceeded: {e}")
+                # Extract retry delay if available
+                if "retry" in error_msg.lower():
+                    return {"error": "QUOTA_EXCEEDED", "message": "Gemini API quota exceeded. Please wait a few minutes and try again."}
+                return {"error": "QUOTA_EXCEEDED", "message": "API quota exceeded. Please wait 1-2 minutes."}
+            
             logger.error(f"Gemini Error: {e}")
             return default
