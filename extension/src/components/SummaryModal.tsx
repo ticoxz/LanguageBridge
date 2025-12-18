@@ -2,15 +2,12 @@ import React from 'react';
 import { X, Copy, Check } from 'lucide-react';
 
 interface SummaryModalProps {
-    isOpen: boolean;
     onClose: () => void;
     summary: string;
 }
 
-const SummaryModal: React.FC<SummaryModalProps> = ({ isOpen, onClose, summary }) => {
+const SummaryModal: React.FC<SummaryModalProps> = ({ onClose, summary }) => {
     const [copied, setCopied] = React.useState(false);
-
-    if (!isOpen) return null;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(summary);

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { X, Mic, MicOff, Loader2, Settings, Square } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Mic, MicOff, Settings as SettingsIcon, Square, Lock, Unlock } from 'lucide-react';
 import SettingsPanel from './SettingsPanel';
 import SummaryModal from './SummaryModal';
 import { Settings as SettingsType } from '../hooks/useSettings';
@@ -37,191 +38,404 @@ const Overlay: React.FC<OverlayProps> = ({
 }) => {
     const [minimized, setMinimized] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
+    const [isLocked, setIsLocked] = useState(false);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const dragRef = useRef<HTMLDivElement>(null);
 
-    // Inline style for rotation animation
-    // Inline style for animations
-    const animationStyles = `
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+    // Get initial position based on settings
+    const getInitialPosition = () => {
+        if (minimized) {
+            return { x: window.innerWidth - 200, y: window.innerHeight - 100 };
         }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-    `;
 
-    if (minimized) {
-        return (
-            <>
-                <style>{animationStyles}</style>
-                <div style={{
-                    position: 'fixed',
-                    bottom: '20px',
-                    right: '20px',
-                    zIndex: 99999,
-                    background: 'linear-gradient(135deg, #FFE135 0%, #FFC700 100%)',
-                    color: '#000',
-                    padding: '12px',
-                    borderRadius: '50%',
-                    cursor: 'pointer',
-                    boxShadow: '0 4px 16px rgba(255, 225, 53, 0.4)',
-                    fontSize: '32px',
-                    width: '56px',
-                    height: '56px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    animation: 'bounce 1s ease-in-out infinite',
-                    border: '2px solid #FFE135'
-                }} onClick={() => setMinimized(false)}>
-                    🍌
-                </div>
-            </>
-        );
-    }
+        const width = 500;
+        const height = 600;
 
-    // Get position styles based on settings
-    const getPositionStyles = () => {
-        const base = { position: 'fixed' as const, width: '320px', zIndex: 99999 };
         switch (settings.position) {
-            case 'top-left': return { ...base, top: '20px', left: '20px' };
-            case 'top-right': return { ...base, top: '20px', right: '20px' };
-            case 'bottom-left': return { ...base, bottom: '20px', left: '20px' };
+            case 'top-left':
+                return { x: 20, y: 20 };
+            case 'top-right':
+                return { x: window.innerWidth - width - 20, y: 20 };
+            case 'bottom-left':
+                return { x: 20, y: window.innerHeight - height - 20 };
             case 'bottom-right':
-            default: return { ...base, bottom: '20px', right: '20px' };
+                return { x: window.innerWidth - width - 20, y: window.innerHeight - height - 20 };
+            case 'center':
+                return { x: (window.innerWidth - width) / 2, y: (window.innerHeight - height) / 2 };
+            default:
+                return { x: window.innerWidth - width - 20, y: window.innerHeight - height - 20 };
         }
     };
 
+    // Initialize position on mount or settings change
+    React.useEffect(() => {
+        setPosition(getInitialPosition());
+    }, [settings.position, minimized]);
+
+    // Minimized floating button
+    if (minimized) {
+        return (
+            <motion.div
+                drag={!isLocked}
+                dragMomentum={false}
+                dragElastic={0}
+                dragConstraints={{
+                    left: 0,
+                    right: window.innerWidth - 180,
+                    top: 0,
+                    bottom: window.innerHeight - 60
+                }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1, x: position.x, y: position.y }}
+                onDragEnd={(_e, info) => setPosition({ x: info.point.x, y: info.point.y })}
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    zIndex: 999999,
+                    background: 'linear-gradient(135deg, rgba(253, 224, 71, 0.95) 0%, rgba(250, 204, 21, 0.95) 100%)',
+                    backdropFilter: 'blur(12px)',
+                    borderRadius: '50px',
+                    padding: '12px 20px',
+                    cursor: isLocked ? 'default' : 'move',
+                    boxShadow: '0 8px 32px rgba(253, 224, 71, 0.4)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontFamily: 'system-ui, -apple-system, sans-serif',
+                }}
+                onClick={() => !isLocked && setMinimized(false)}
+                whileHover={!isLocked ? { scale: 1.05 } : {}}
+                whileTap={!isLocked ? { scale: 0.95 } : {}}
+            >
+                <span style={{ fontSize: '18px' }}>🍌</span>
+                <span style={{ fontWeight: 700, color: '#000', fontSize: '14px' }}>B-Bridge</span>
+                {isListening && (
+                    <motion.div
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ repeat: Infinity, duration: 1.5 }}
+                    >
+                        <Mic size={16} color="#000" />
+                    </motion.div>
+                )}
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setIsLocked(!isLocked);
+                    }}
+                    style={{
+                        background: 'rgba(0, 0, 0, 0.2)',
+                        border: 'none',
+                        borderRadius: '6px',
+                        padding: '4px',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        marginLeft: '4px',
+                    }}
+                >
+                    {isLocked ? <Lock size={14} color="#000" /> : <Unlock size={14} color="#000" />}
+                </button>
+            </motion.div>
+        );
+    }
+
+    // Main overlay
     return (
         <>
-            {showSettings && (
-                <SettingsPanel
-                    settings={settings}
-                    onUpdate={onUpdateSettings}
-                    onClose={() => setShowSettings(false)}
-                />
-            )}
-            <div style={{
-                ...getPositionStyles(),
-                fontFamily: 'Roboto, sans-serif',
-                fontSize: '14px',
-                background: '#202124',
-                color: '#e8eaed',
-                borderRadius: '12px',
-                boxShadow: '0 4px 24px rgba(0,0,0,0.5)',
-                display: 'flex',
-                flexDirection: 'column',
-                overflow: 'hidden',
-                border: '1px solid #3c4043'
-            }}>
-                <style>{animationStyles}</style>
-
+            <motion.div
+                ref={dragRef}
+                drag={!isLocked}
+                dragMomentum={false}
+                dragElastic={0}
+                dragConstraints={{
+                    left: 0,
+                    right: window.innerWidth - 500,
+                    top: 0,
+                    bottom: window.innerHeight - 600
+                }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1, x: position.x, y: position.y }}
+                onDragEnd={(_e, info) => setPosition({ x: info.point.x, y: info.point.y })}
+                transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    zIndex: 999999,
+                    width: '500px',
+                    maxWidth: '90vw',
+                    background: 'rgba(20, 20, 20, 0.85)',
+                    backdropFilter: 'blur(12px)',
+                    borderRadius: '16px',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05)',
+                    overflow: 'hidden',
+                    fontFamily: 'system-ui, -apple-system, sans-serif',
+                    cursor: isLocked ? 'default' : 'move',
+                }}
+            >
                 {/* Header */}
                 <div style={{
-                    padding: '12px 16px',
-                    background: '#1a1a1a', // Darker background
+                    padding: '16px 20px',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
                     display: 'flex',
-                    justifyContent: 'space-between',
                     alignItems: 'center',
-                    borderBottom: '1px solid #333'
+                    justifyContent: 'space-between',
+                    background: 'rgba(0, 0, 0, 0.3)',
                 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <div style={{ fontSize: '18px' }}>🍌</div>
-                        <span style={{ fontWeight: 800, fontSize: '16px', color: '#FFE135', letterSpacing: '0.5px' }}>B-Bridge</span>
-                        <div style={{
-                            width: '8px',
-                            height: '8px',
-                            borderRadius: '50%',
-                            background: isListening ? '#34a853' : '#ea4335',
-                            boxShadow: isListening ? '0 0 8px #34a853' : 'none',
-                            marginLeft: '8px'
-                        }} />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <span style={{ fontSize: '20px' }}>🍌</span>
+                        <span style={{ fontWeight: 700, fontSize: '16px', color: '#FDE047' }}>BananaBridge</span>
                     </div>
-                    <div style={{ display: 'flex', gap: '8px' }}>
-                        <button
-                            onClick={onRequestSummary}
-                            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ea4335', marginRight: '4px' }}
-                            title="Stop & Summarize"
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        {/* Lock/Unlock */}
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => setIsLocked(!isLocked)}
+                            style={{
+                                background: isLocked ? '#FDE047' : 'rgba(255, 255, 255, 0.1)',
+                                border: 'none',
+                                borderRadius: '8px',
+                                padding: '8px',
+                                cursor: 'pointer',
+                                display: 'flex',
+                            }}
                         >
-                            <Square size={16} fill="currentColor" />
-                        </button>
-                        <button
+                            {isLocked ? <Lock size={16} color="#000" /> : <Unlock size={16} color="#fff" />}
+                        </motion.button>
+
+                        {/* Mic toggle */}
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
                             onClick={onToggleListening}
-                            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9aa0a6' }}
+                            style={{
+                                background: isListening ? '#FDE047' : 'rgba(255, 255, 255, 0.1)',
+                                border: 'none',
+                                borderRadius: '8px',
+                                padding: '8px',
+                                cursor: 'pointer',
+                                display: 'flex',
+                            }}
                         >
-                            {isListening ? <Mic size={16} /> : <MicOff size={16} />}
-                        </button>
-                        <button
+                            {isListening ? <Mic size={16} color="#000" /> : <MicOff size={16} color="#fff" />}
+                        </motion.button>
+
+                        {/* Settings */}
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
                             onClick={() => setShowSettings(true)}
-                            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9aa0a6' }}
-                            title="Settings"
+                            style={{
+                                background: 'rgba(255, 255, 255, 0.1)',
+                                border: 'none',
+                                borderRadius: '8px',
+                                padding: '8px',
+                                cursor: 'pointer',
+                                display: 'flex',
+                            }}
                         >
-                            <Settings size={16} />
-                        </button>
-                        <button
+                            <SettingsIcon size={16} color="#fff" />
+                        </motion.button>
+
+                        {/* Stop & Summarize */}
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={onRequestSummary}
+                            style={{
+                                background: 'linear-gradient(135deg, #FDE047 0%, #FACC15 100%)',
+                                border: 'none',
+                                borderRadius: '8px',
+                                padding: '8px 14px',
+                                cursor: 'pointer',
+                                fontWeight: 700,
+                                fontSize: '11px',
+                                color: '#000',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                                boxShadow: '0 4px 12px rgba(253, 224, 71, 0.3)',
+                            }}
+                        >
+                            <Square size={12} />
+                            Stop
+                        </motion.button>
+
+                        {/* Minimize */}
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
                             onClick={() => setMinimized(true)}
-                            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9aa0a6' }}
+                            style={{
+                                background: 'rgba(255, 255, 255, 0.1)',
+                                border: 'none',
+                                borderRadius: '8px',
+                                padding: '8px',
+                                cursor: 'pointer',
+                                display: 'flex',
+                            }}
                         >
-                            <X size={16} />
-                        </button>
+                            <X size={16} color="#fff" />
+                        </motion.button>
                     </div>
                 </div>
 
                 {/* Content */}
-                <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div style={{ padding: '20px', maxHeight: '400px', overflowY: 'auto' }}>
+                    {/* Transcription Section */}
+                    <div style={{ marginBottom: '24px' }}>
+                        <h3 style={{
+                            margin: '0 0 16px 0',
+                            fontSize: '12px',
+                            fontWeight: 700,
+                            color: '#FDE047',
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px'
+                        }}>
+                            Transcripción y Traducción
+                        </h3>
 
-                    {/* Original Text */}
-                    <div style={{ color: '#9aa0a6', fontSize: '12px', fontStyle: 'italic' }}>
-                        {transcript || "Listening..."}
-                    </div>
+                        {transcript ? (
+                            <>
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    style={{
+                                        background: 'rgba(255, 255, 255, 0.05)',
+                                        borderRadius: '12px',
+                                        padding: '14px 16px',
+                                        marginBottom: '12px',
+                                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                                    }}
+                                >
+                                    <div style={{ color: '#f3f4f6', fontSize: '13px', lineHeight: '1.7' }}>
+                                        <span style={{ fontWeight: 700, color: '#FDE047', marginRight: '6px' }}>You (EN):</span>
+                                        <span>{transcript}</span>
+                                    </div>
+                                </motion.div>
 
-                    {/* Translation */}
-                    <div style={{ fontSize: '16px', fontWeight: 500, minHeight: '40px' }}>
-                        {isTranslating ? (
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#FFE135' }}>
-                                <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} />
-                                <span>Translating...</span>
-                            </div>
+                                {translation && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        style={{
+                                            background: 'rgba(253, 224, 71, 0.08)',
+                                            borderRadius: '12px',
+                                            padding: '14px 16px',
+                                            border: '1px solid rgba(253, 224, 71, 0.2)',
+                                        }}
+                                    >
+                                        <div style={{ marginBottom: isTranslating ? '8px' : '0' }}>
+                                            <span style={{ fontWeight: 700, color: '#FDE047', fontSize: '13px', marginRight: '6px' }}>→ Translation:</span>
+                                            <span style={{ color: '#f3f4f6', fontSize: '13px', lineHeight: '1.7' }}>{translation}</span>
+                                        </div>
+                                        {isTranslating && (
+                                            <div style={{ color: '#9ca3af', fontSize: '11px', fontStyle: 'italic', marginTop: '6px' }}>
+                                                Listening...
+                                            </div>
+                                        )}
+                                    </motion.div>
+                                )}
+                            </>
                         ) : (
-                            translation || "..."
+                            <div style={{
+                                color: '#6b7280',
+                                fontSize: '13px',
+                                textAlign: 'center',
+                                padding: '20px',
+                                fontStyle: 'italic'
+                            }}>
+                                Click the microphone to start listening...
+                            </div>
                         )}
                     </div>
 
                     {/* Smart Replies */}
-                    {replies.length > 0 && !isTranslating && (
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '8px' }}>
-                            <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5f6368', fontWeight: 700 }}>Smart Replies</span>
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                                {replies.map((reply, idx) => (
-                                    <button
+                    {replies.length > 0 && (
+                        <div>
+                            <h3 style={{
+                                margin: '0 0 14px 0',
+                                fontSize: '12px',
+                                fontWeight: 700,
+                                color: '#FDE047',
+                                textTransform: 'uppercase',
+                                letterSpacing: '1px'
+                            }}>
+                                Smart Replies
+                            </h3>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                {replies.slice(0, 3).map((reply, idx) => (
+                                    <motion.button
                                         key={idx}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: idx * 0.1 }}
+                                        whileHover={{ scale: 1.02, boxShadow: '0 6px 20px rgba(253, 224, 71, 0.4)' }}
+                                        whileTap={{ scale: 0.98 }}
                                         onClick={() => onReplyClick(reply)}
                                         style={{
-                                            background: 'rgba(255, 225, 53, 0.15)',
-                                            color: '#FFE135',
-                                            border: '1px solid rgba(255, 225, 53, 0.3)',
-                                            borderRadius: '16px',
-                                            padding: '6px 12px',
-                                            fontSize: '12px',
+                                            background: 'linear-gradient(135deg, #FDE047 0%, #FACC15 100%)',
+                                            border: 'none',
+                                            borderRadius: '10px',
+                                            padding: '13px 16px',
                                             cursor: 'pointer',
-                                            transition: 'background 0.2s',
-                                            textAlign: 'left'
+                                            fontWeight: 600,
+                                            fontSize: '13px',
+                                            color: '#000',
+                                            textAlign: 'left',
+                                            boxShadow: '0 4px 12px rgba(253, 224, 71, 0.2)',
+                                            transition: 'all 0.2s',
                                         }}
                                     >
                                         {reply}
-                                    </button>
+                                    </motion.button>
                                 ))}
                             </div>
                         </div>
                     )}
                 </div>
-            </div>
-            <SummaryModal
-                isOpen={isSummaryOpen}
-                onClose={onCloseSummary}
-                summary={summary}
-            />
+
+                {/* Footer */}
+                <div style={{
+                    padding: '14px 20px',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    background: 'rgba(0, 0, 0, 0.3)',
+                }}>
+                    <div style={{ fontSize: '11px', color: '#9ca3af', lineHeight: '1.4' }}>
+                        <span style={{ fontWeight: 600, color: '#d1d5db' }}>Tone:</span> {settings.tone.charAt(0).toUpperCase() + settings.tone.slice(1)}
+                        {' • '}
+                        <span style={{ fontWeight: 600, color: '#d1d5db' }}>Level:</span> {settings.englishLevel.charAt(0).toUpperCase() + settings.englishLevel.slice(1)}
+                    </div>
+                </div>
+            </motion.div>
+
+            {/* Settings Panel */}
+            <AnimatePresence>
+                {showSettings && (
+                    <SettingsPanel
+                        settings={settings}
+                        onUpdate={onUpdateSettings}
+                        onClose={() => setShowSettings(false)}
+                    />
+                )}
+            </AnimatePresence>
+
+            {/* Summary Modal */}
+            <AnimatePresence>
+                {isSummaryOpen && (
+                    <SummaryModal
+                        summary={summary}
+                        onClose={onCloseSummary}
+                    />
+                )}
+            </AnimatePresence>
         </>
     );
 };

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export interface Settings {
     language: 'es-ES' | 'en-US' | 'auto';
-    position: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
+    position: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left' | 'center';
     backendUrl: string;
     englishLevel: 'beginner' | 'intermediate' | 'advanced' | 'native';
     tone: 'formal' | 'casual' | 'friendly';
