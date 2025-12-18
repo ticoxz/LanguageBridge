@@ -262,3 +262,92 @@ Please retry in 57.772142852s. [links {
 2025-12-18 19:26:59,698 - services - DEBUG - DEBUG: Audio generator done
 2025-12-18 19:26:59,987 - services - DEBUG - DEBUG: Waiting for responses...
 2025-12-18 19:26:59,987 - services - DEBUG - DEBUG: Stream ended (0 responses)
+2025-12-18 19:53:44,767 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 19:53:44,833 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 19:53:44,833 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 19:53:44,833 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 19:53:47,302 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 19:53:47,636 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776498207600
+2025-12-18 19:53:47,636 - grpc._cython.cygrpc - DEBUG - Using AsyncIOEngine.POLLER as I/O engine
+2025-12-18 19:53:47,637 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776498207600
+2025-12-18 19:53:47,638 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776498207600
+2025-12-18 19:53:47,720 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776498207600
+2025-12-18 19:53:47,966 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776498207600
+2025-12-18 19:53:48,299 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776498207600
+2025-12-18 19:53:48,920 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 11.717410969s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 11
+}
+]
+2025-12-18 19:53:49,158 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-18 19:53:49,496 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-18 19:53:49,506 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776498207600
+2025-12-18 19:53:49,507 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=1776498207600
+2025-12-18 19:53:49,796 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 10.848174591s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 10
+}
+]
+2025-12-18 19:53:50,618 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 10.02877452s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 10
+}
+]
+2025-12-18 19:53:52,412 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 19:53:52,412 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 19:53:52,412 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 19:53:52,641 - services - DEBUG - DEBUG: Stream ended (10 responses)

@@ -95,6 +95,63 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ settings, onUpdate, onClo
                     </div>
                 </div>
 
+                {/* English Level */}
+                <div style={{ marginBottom: '20px' }}>
+                    <label style={{ display: 'block', color: '#FFE135', fontSize: '12px', fontWeight: 600, marginBottom: '8px', textTransform: 'uppercase' }}>
+                        English Level
+                    </label>
+                    <select
+                        value={settings.englishLevel}
+                        onChange={(e) => onUpdate({ englishLevel: e.target.value as Settings['englishLevel'] })}
+                        style={{
+                            width: '100%',
+                            padding: '10px',
+                            background: '#2a2a2a',
+                            border: '1px solid #FFE135',
+                            borderRadius: '8px',
+                            color: '#fff',
+                            fontSize: '14px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        <option value="beginner">🌱 Beginner (Simple)</option>
+                        <option value="intermediate">📚 Intermediate</option>
+                        <option value="advanced">🎓 Advanced</option>
+                        <option value="native">🌟 Native-like</option>
+                    </select>
+                    <div style={{ fontSize: '11px', color: '#999', marginTop: '4px' }}>
+                        Adjusts complexity of smart replies
+                    </div>
+                </div>
+
+                {/* Tone */}
+                <div style={{ marginBottom: '20px' }}>
+                    <label style={{ display: 'block', color: '#FFE135', fontSize: '12px', fontWeight: 600, marginBottom: '8px', textTransform: 'uppercase' }}>
+                        Reply Tone
+                    </label>
+                    <select
+                        value={settings.tone}
+                        onChange={(e) => onUpdate({ tone: e.target.value as Settings['tone'] })}
+                        style={{
+                            width: '100%',
+                            padding: '10px',
+                            background: '#2a2a2a',
+                            border: '1px solid #FFE135',
+                            borderRadius: '8px',
+                            color: '#fff',
+                            fontSize: '14px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        <option value="formal">👔 Formal</option>
+                        <option value="casual">😊 Casual</option>
+                        <option value="friendly">🤝 Friendly</option>
+                    </select>
+                    <div style={{ fontSize: '11px', color: '#999', marginTop: '4px' }}>
+                        Sets the style of responses
+                    </div>
+                </div>
+
                 {/* Backend URL */}
                 <div style={{ marginBottom: '20px' }}>
                     <label style={{ display: 'block', color: '#FFE135', fontSize: '12px', fontWeight: 600, marginBottom: '8px', textTransform: 'uppercase' }}>

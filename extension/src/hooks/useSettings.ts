@@ -4,12 +4,16 @@ export interface Settings {
     language: 'es-ES' | 'en-US' | 'auto';
     position: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
     backendUrl: string;
+    englishLevel: 'beginner' | 'intermediate' | 'advanced' | 'native';
+    tone: 'formal' | 'casual' | 'friendly';
 }
 
 const DEFAULT_SETTINGS: Settings = {
     language: 'auto',
     position: 'bottom-right',
-    backendUrl: 'ws://localhost:8000'
+    backendUrl: 'ws://localhost:8000',
+    englishLevel: 'intermediate',
+    tone: 'casual'
 };
 
 export const useSettings = () => {

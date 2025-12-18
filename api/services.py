@@ -221,18 +221,35 @@ class SmartAssistant:
         
         return result
 
-    async def generate_smart_replies(self, text: str) -> dict:
-        """Generate replies separately."""
+    async def generate_smart_replies(self, text: str, level: str = "intermediate", tone: str = "casual", target_speaker: str = None) -> dict:
+        """Generate context-aware smart replies with personalization."""
         if not self.active:
-            return {"replies": ["Mock R1", "Mock R2"]}
+            return {"replies": ["[Mock] Reply 1", "[Mock] Reply 2"]}
 
+        # Level-based complexity
+        level_prompts = {
+            "beginner": "very simple, max 3 words, basic vocabulary (e.g., 'Yes', 'I agree', 'Sounds good')",
+            "intermediate": "short and clear, max 5 words, common phrases",
+            "advanced": "professional, 5-10 words, varied vocabulary",
+            "native": "natural with idioms, any length, native expressions"
+        }
+        
+        # Tone-based style
+        tone_prompts = {
+            "formal": "professional and respectful",
+            "casual": "friendly and relaxed",
+            "friendly": "warm and approachable"
+        }
+        
+        target_prefix = f"→ {target_speaker}: " if target_speaker else ""
+        
         prompt = f"""
-        Task: 2 short smart replies (max 5 words, match input lang).
-        Input: "{text}"
-        Output JSON: {{"replies": ["r1", "r2"]}}
+        Task: Generate 2 smart replies to{' ' + target_speaker if target_speaker else ''}: "{text}"
+        Style: {level_prompts.get(level, level_prompts['intermediate'])}, {tone_prompts.get(tone, tone_prompts['casual'])} tone
+        Format: {f'Prefix each reply with "→ {target_speaker}: "' if target_speaker else 'No prefix needed'}
+        Output JSON: {{"replies": ["{target_prefix}reply1", "{target_prefix}reply2"]}}
         """
-        return await self._call_gemini(prompt, default={"replies": []})
-
+        return await self._call_gemini(prompt, default={"replies": [f"{target_prefix}Could not generate.", f"{target_prefix}Try again."]})
     async def generate_summary(self, text: str) -> dict:
         """Generate a session summary."""
         if not self.active or not text:

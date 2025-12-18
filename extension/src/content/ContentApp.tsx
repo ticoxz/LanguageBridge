@@ -59,6 +59,14 @@ const ContentApp: React.FC = () => {
 
             wsRef.current.onopen = () => {
                 console.log('✅ WebSocket OPEN - Ready to send audio');
+                // Send current settings to backend
+                if (wsRef.current) {
+                    wsRef.current.send(JSON.stringify({
+                        type: 'settings_update',
+                        englishLevel: settings.englishLevel,
+                        tone: settings.tone
+                    }));
+                }
                 resolve();
             };
 

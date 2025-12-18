@@ -39,9 +39,16 @@
 - **Parallel Processing**: Translation + Smart Replies execute simultaneously
 - **Sub-Second Latency**: Optimized prompts and `gemini-2.5-flash` model
 
-### 💬 Smart Replies
-- **AI-Powered Suggestions**: 2 concise responses (max 5 words each)
-- **Context-Aware**: Matches the language and tone of the conversation
+### 💬 Smart Replies (Personalized!)
+- **AI-Powered Suggestions**: 2 context-aware responses
+- **English Level Selector**: Beginner (simple) → Native (with idioms)
+  - Beginner: "I agree", "Sounds good" (2-3 words)
+  - Intermediate: "That makes sense" (3-5 words)
+  - Advanced: "I think that's a solid approach" (5-10 words)
+  - Native: "I'm totally on board with that" (natural expressions)
+- **Tone Selector**: Formal, Casual, or Friendly
+- **Target Speaker Detection**: Shows who you're responding to
+  - Example: "→ María: I agree with your proposal"
 - **One-Click Copy**: Click any reply to copy to clipboard
 
 ### 📝 Meeting Summary
@@ -186,6 +193,7 @@ Example response:
 - [x] **Speed Optimizations**: Cache + Predictive Translation
 - [x] **Speaker Diarization**: Multi-speaker detection & context continuation
 - [x] **Meeting Summaries**: AI-powered conversation summaries
+- [x] **Reply Personalization**: English level, tone, and target speaker detection
 
 ### In Progress 🚧
 - [ ] **Speaker UI Integration**: Complete speaker name assignment in overlay

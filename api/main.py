@@ -80,8 +80,12 @@ async def audio_stream(websocket: WebSocket, user_id: str = Query(..., descripti
 
     transcriber = transcriber_class()
     
-    # We run the transcription loop as a task
+    # Session state
+    session_transcript = []
     transcription_task = None
+    user_settings = {"englishLevel": "intermediate", "tone": "casual"}  # Default settings
+    last_speaker_tag = None
+    last_speaker_name = None
     
     try:
         # Speaker context for handling interruptions
@@ -119,6 +123,8 @@ async def audio_stream(websocket: WebSocket, user_id: str = Query(..., descripti
                     
                     # Update last speaker
                     last_speaker = speaker_tag
+                    last_speaker_tag = speaker_tag
+                    last_speaker_name = f"Speaker {speaker_tag}"  # Default name, can be customized later
                 
                 # Store context for potential interruption (only for final transcripts)
                 if is_final and speaker_tag and len(transcript.strip().split()) >= 3:
@@ -154,7 +160,14 @@ async def audio_stream(websocket: WebSocket, user_id: str = Query(..., descripti
                                 
                                 # Only generate replies for final transcripts
                                 if is_final_translation:
-                                    replies_task = asyncio.create_task(assistant.generate_smart_replies(text_to_translate))
+                                    replies_task = asyncio.create_task(
+                                        assistant.generate_smart_replies(
+                                            text_to_translate,
+                                            level=user_settings.get("englishLevel", "intermediate"),
+                                            tone=user_settings.get("tone", "casual"),
+                                            target_speaker=last_speaker_name
+                                        )
+                                    )
                                     trans_res, replies_res = await asyncio.gather(trans_task, replies_task)
                                 else:
                                     trans_res = await trans_task
@@ -213,13 +226,20 @@ async def audio_stream(websocket: WebSocket, user_id: str = Query(..., descripti
             
             # ... (text message handling skipped for brevity if not changing) ...
 
-            # Handle Text Messages (Commands like 'request_summary')
+            # Handle Text Messages (Commands like 'request_summary', 'settings_update')
             if "text" in message:
                 try:
                     data = json.loads(message["text"])
                     
                     # Ignore ping messages (keepalive)
                     if data.get("type") == "ping":
+                        continue
+                    
+                    # Handle settings update
+                    if data.get("type") == "settings_update":
+                        user_settings["englishLevel"] = data.get("englishLevel", "intermediate")
+                        user_settings["tone"] = data.get("tone", "casual")
+                        logging.debug(f"Updated settings: {user_settings}")
                         continue
                     
                     if data.get("type") == "request_summary":
