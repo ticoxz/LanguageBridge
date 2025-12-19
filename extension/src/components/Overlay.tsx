@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mic, MicOff, Settings as SettingsIcon, Square, Lock, Unlock } from 'lucide-react';
+import { X, Mic, MicOff, Settings as SettingsIcon, Square, Lock, Unlock, Users } from 'lucide-react';
 import SettingsPanel from './SettingsPanel';
 import SummaryModal from './SummaryModal';
+import SpeakerAssignmentModal from './SpeakerAssignmentModal';
 import { Settings as SettingsType } from '../hooks/useSettings';
 
 interface OverlayProps {
@@ -41,7 +42,13 @@ const Overlay: React.FC<OverlayProps> = ({
     summary,
     isSummaryOpen,
     onRequestSummary,
-    onCloseSummary
+    onCloseSummary,
+    detectedSpeakers,
+    speakerNames,
+    isSpeakerModalOpen,
+    onOpenSpeakerModal,
+    onCloseSpeakerModal,
+    onSaveSpeakerNames
 }) => {
     const [minimized, setMinimized] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
@@ -244,9 +251,30 @@ const Overlay: React.FC<OverlayProps> = ({
                                 cursor: 'pointer',
                                 display: 'flex',
                             }}
+                            title="Settings"
                         >
                             <SettingsIcon size={16} color="#fff" />
                         </motion.button>
+
+                        {/* Assign Speakers */}
+                        {onOpenSpeakerModal && (
+                            <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                onClick={onOpenSpeakerModal}
+                                style={{
+                                    background: 'rgba(255, 255, 255, 0.1)',
+                                    border: 'none',
+                                    borderRadius: '8px',
+                                    padding: '8px',
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                }}
+                                title="Assign Speakers"
+                            >
+                                <Users size={16} color="#fff" />
+                            </motion.button>
+                        )}
 
                         {/* Stop & Summarize */}
                         <motion.button
@@ -290,6 +318,22 @@ const Overlay: React.FC<OverlayProps> = ({
                         </motion.button>
                     </div>
                 </div>
+
+                {/* Auto-Load Indicator */}
+                {speakerNames && Object.keys(speakerNames).length > 0 && (
+                    <div style={{
+                        fontSize: '11px',
+                        color: '#FDE047',
+                        padding: '8px 16px',
+                        background: 'rgba(253, 224, 71, 0.1)',
+                        borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                    }}>
+                        ✅ Speaker names auto-loaded
+                    </div>
+                )}
 
                 {/* Content */}
                 <div style={{ padding: '20px', maxHeight: '400px', overflowY: 'auto' }}>
@@ -443,6 +487,27 @@ const Overlay: React.FC<OverlayProps> = ({
                     />
                 )}
             </AnimatePresence>
+
+            {/* Speaker Assignment Modal */}
+            {onSaveSpeakerNames && onCloseSpeakerModal && (
+                <AnimatePresence>
+                    {isSpeakerModalOpen && (
+                        <SpeakerAssignmentModal
+                            isOpen={isSpeakerModalOpen}
+                            onClose={onCloseSpeakerModal}
+                            detectedSpeakers={detectedSpeakers || []}
+                            speakerNames={
+                                speakerNames
+                                    ? Object.fromEntries(
+                                        Object.entries(speakerNames).map(([k, v]) => [Number(k), v])
+                                    )
+                                    : {}
+                            }
+                            onSave={onSaveSpeakerNames}
+                        />
+                    )}
+                </AnimatePresence>
+            )}
         </>
     );
 };
