@@ -90,28 +90,19 @@ const Overlay: React.FC<OverlayProps> = ({
     if (minimized) {
         return (
             <motion.div
-                drag={!isLocked}
-                dragMomentum={false}
-                dragElastic={0}
-                dragConstraints={{
-                    left: 0,
-                    right: window.innerWidth - 180,
-                    top: 0,
-                    bottom: window.innerHeight - 60
-                }}
                 initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1, x: position.x, y: position.y }}
-                onDragEnd={(_e, info) => setPosition({ x: info.point.x, y: info.point.y })}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0, opacity: 0 }}
                 style={{
                     position: 'fixed',
-                    top: 0,
-                    left: 0,
+                    bottom: '20px',
+                    right: '20px',
                     zIndex: 999999,
                     background: 'linear-gradient(135deg, rgba(253, 224, 71, 0.95) 0%, rgba(250, 204, 21, 0.95) 100%)',
                     backdropFilter: 'blur(12px)',
                     borderRadius: '50px',
                     padding: '12px 20px',
-                    cursor: isLocked ? 'default' : 'move',
+                    cursor: 'pointer',
                     boxShadow: '0 8px 32px rgba(253, 224, 71, 0.4)',
                     border: '1px solid rgba(255, 255, 255, 0.3)',
                     display: 'flex',
@@ -119,9 +110,9 @@ const Overlay: React.FC<OverlayProps> = ({
                     gap: '8px',
                     fontFamily: 'system-ui, -apple-system, sans-serif',
                 }}
-                onClick={() => !isLocked && setMinimized(false)}
-                whileHover={!isLocked ? { scale: 1.05 } : {}}
-                whileTap={!isLocked ? { scale: 0.95 } : {}}
+                onClick={() => setMinimized(false)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
             >
                 <span style={{ fontSize: '18px' }}>🍌</span>
                 <span style={{ fontWeight: 700, color: '#000', fontSize: '14px' }}>B-Bridge</span>
@@ -129,27 +120,11 @@ const Overlay: React.FC<OverlayProps> = ({
                     <motion.div
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ repeat: Infinity, duration: 1.5 }}
+                        style={{ display: 'flex' }}
                     >
                         <Mic size={16} color="#000" />
                     </motion.div>
                 )}
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        setIsLocked(!isLocked);
-                    }}
-                    style={{
-                        background: 'rgba(0, 0, 0, 0.2)',
-                        border: 'none',
-                        borderRadius: '6px',
-                        padding: '4px',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        marginLeft: '4px',
-                    }}
-                >
-                    {isLocked ? <Lock size={14} color="#000" /> : <Unlock size={14} color="#000" />}
-                </button>
             </motion.div>
         );
     }
@@ -166,7 +141,7 @@ const Overlay: React.FC<OverlayProps> = ({
                     left: 0,
                     right: window.innerWidth - 500,
                     top: 0,
-                    bottom: window.innerHeight - 600
+                    bottom: window.innerHeight - 550
                 }}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1, x: position.x, y: position.y }}
