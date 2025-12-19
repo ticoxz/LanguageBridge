@@ -138,19 +138,21 @@ const Overlay: React.FC<OverlayProps> = ({
                 dragMomentum={false}
                 dragElastic={0}
                 dragConstraints={{
-                    left: 0,
-                    right: window.innerWidth - 500,
-                    top: 0,
-                    bottom: window.innerHeight - 550
+                    left: -position.x,
+                    right: window.innerWidth - 500 - position.x,
+                    top: -position.y,
+                    bottom: window.innerHeight - 550 - position.y
                 }}
                 initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1, x: position.x, y: position.y }}
-                onDragEnd={(_e, info) => setPosition({ x: info.point.x, y: info.point.y })}
+                animate={{ opacity: 1, scale: 1 }}
+                onDrag={(_e, info) => {
+                    setPosition({ x: info.point.x, y: info.point.y });
+                }}
                 transition={{ type: 'spring', damping: 20, stiffness: 300 }}
                 style={{
                     position: 'fixed',
-                    top: 0,
-                    left: 0,
+                    top: position.y,
+                    left: position.x,
                     zIndex: 999999,
                     width: '500px',
                     maxWidth: '90vw',
