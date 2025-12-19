@@ -351,3 +351,13 @@ Please retry in 10.02877452s. [links {
 2025-12-18 19:53:52,412 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
 2025-12-18 19:53:52,412 - services - DEBUG - DEBUG: Audio generator done
 2025-12-18 19:53:52,641 - services - DEBUG - DEBUG: Stream ended (10 responses)
+2025-12-18 20:37:24,345 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-18 20:37:24,414 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-18 20:37:24,414 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-18 20:37:24,414 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-18 20:37:24,414 - root - DEBUG - Updated settings: {'englishLevel': 'intermediate', 'tone': 'casual'}
+2025-12-18 20:37:25,290 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-18 20:37:25,290 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-18 20:37:25,291 - services - DEBUG - DEBUG: Audio generator done
+2025-12-18 20:37:25,462 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-18 20:37:25,462 - services - DEBUG - DEBUG: Stream ended (0 responses)

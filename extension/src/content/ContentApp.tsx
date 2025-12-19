@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Overlay from '../components/Overlay';
 import { useSettings } from '../hooks/useSettings';
+import { getMeetingId, loadSpeakerNames, clearOldMeetings } from '../utils/meetingStorage';
+// import { saveSpeakerNames } from '../utils/meetingStorage'; // TODO: Use when implementing save functionality
 
 interface ScriptProcessorNodeWithMonitor extends ScriptProcessorNode {
     _monitorInterval?: NodeJS.Timeout;
@@ -17,9 +19,9 @@ const ContentApp: React.FC = () => {
     const [summary, setSummary] = useState('');
     const [isSummaryOpen, setIsSummaryOpen] = useState(false);
 
-    // Speaker diarization state (TODO: integrate with UI)
+    // Speaker diarization state (TODO: Fully integrate with UI)
     // const [detectedSpeakers, setDetectedSpeakers] = useState<number[]>([]);
-    // const [speakerNames, setSpeakerNames] = useState<Record<number, string>>({});
+    const [speakerNames, setSpeakerNames] = useState<Record<string, string>>({});
     // const [isSpeakerModalOpen, setIsSpeakerModalOpen] = useState(false);
 
     const wsRef = useRef<WebSocket | null>(null);
@@ -32,15 +34,21 @@ const ContentApp: React.FC = () => {
         const userId = localStorage.getItem('lb_user_id') || `user_${Math.random().toString(36).substr(2, 9)}`;
         localStorage.setItem('lb_user_id', userId);
 
-        // TODO: Load speaker names from localStorage when UI is ready
-        // const storedNames = localStorage.getItem('lb_speaker_names');
-        // if (storedNames) {
-        //     try {
-        //         setSpeakerNames(JSON.parse(storedNames));
-        //     } catch (e) {
-        //         console.error('Failed to parse speaker names:', e);
-        //     }
-        // }
+        // Auto-load speaker names for this meeting
+        const meetingId = getMeetingId();
+        if (meetingId) {
+            const savedNames = loadSpeakerNames(meetingId);
+            if (savedNames && Object.keys(savedNames).length > 0) {
+                setSpeakerNames(savedNames);
+                console.log('✅ Auto-loaded speaker names for meeting:', meetingId);
+            }
+        }
+
+        // Clean up old meetings (30+ days)
+        clearOldMeetings(30);
+
+        // Log speaker names for debugging
+        console.log('Current speaker names:', speakerNames);
 
         return () => {
             stopListening();
