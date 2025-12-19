@@ -19,6 +19,13 @@ interface OverlayProps {
     isSummaryOpen: boolean;
     onRequestSummary: () => void;
     onCloseSummary: () => void;
+    // Speaker props (optional for now)
+    detectedSpeakers?: number[];
+    speakerNames?: Record<string, string>;
+    isSpeakerModalOpen?: boolean;
+    onOpenSpeakerModal?: () => void;
+    onCloseSpeakerModal?: () => void;
+    onSaveSpeakerNames?: (names: Record<number, string>) => void;
 }
 
 const Overlay: React.FC<OverlayProps> = ({

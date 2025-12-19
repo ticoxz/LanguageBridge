@@ -361,3 +361,541 @@ Please retry in 10.02877452s. [links {
 2025-12-18 20:37:25,291 - services - DEBUG - DEBUG: Audio generator done
 2025-12-18 20:37:25,462 - services - DEBUG - DEBUG: Waiting for responses...
 2025-12-18 20:37:25,462 - services - DEBUG - DEBUG: Stream ended (0 responses)
+2025-12-19 11:31:47,760 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-19 11:31:47,891 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-19 11:31:47,892 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-19 11:31:47,892 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-19 11:31:47,896 - root - DEBUG - Updated settings: {'englishLevel': 'intermediate', 'tone': 'casual'}
+2025-12-19 11:31:50,281 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-19 11:31:51,407 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:51,407 - grpc._cython.cygrpc - DEBUG - Using AsyncIOEngine.POLLER as I/O engine
+2025-12-19 11:31:51,408 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:51,409 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:51,477 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:51,764 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:52,000 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:52,077 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-19 11:31:52,079 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:52,196 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-19 11:31:52,326 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:52,593 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:52,653 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:53,012 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:53,111 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:53,207 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:53,244 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:53,265 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:53,523 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:53,537 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-19 11:31:53,539 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:53,795 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:54,033 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:54,134 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:54,304 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:54,467 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:54,544 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:54,703 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:54,889 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:55,094 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:55,323 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-19 11:31:55,324 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:55,458 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:55,586 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:55,694 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:55,942 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:56,044 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:56,090 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:56,132 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:56,277 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:56,466 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-19 11:31:56,482 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:56,641 - services - DEBUG - DEBUG: Got 40 responses
+2025-12-19 11:31:56,643 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:56,705 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:56,783 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:56,873 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:57,078 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:57,191 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:57,521 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:57,706 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:57,760 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:57,773 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:58,129 - services - DEBUG - DEBUG: Got 50 responses
+2025-12-19 11:31:58,131 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:58,352 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:58,394 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:58,756 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:58,909 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:31:59,471 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:00,522 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:00,537 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:00,726 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-19 11:32:00,762 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:00,812 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:00,907 - services - DEBUG - DEBUG: Got 60 responses
+2025-12-19 11:32:00,908 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:01,102 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:01,668 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:03,593 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:04,190 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:04,607 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:04,996 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-19 11:32:05,270 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:05,634 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 55.642014809s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 55
+}
+]
+2025-12-19 11:32:06,165 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:06,524 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 54.725204912s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 54
+}
+]
+2025-12-19 11:32:07,279 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:07,279 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:32:07,592 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 53.686708631s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 53
+}
+]
+2025-12-19 11:32:08,410 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 52.864849515s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 52
+}
+]
+2025-12-19 11:32:09,266 - services - DEBUG - DEBUG: Fed 250 chunks
+2025-12-19 11:32:13,527 - services - DEBUG - DEBUG: Fed 300 chunks
+2025-12-19 11:32:17,796 - services - DEBUG - DEBUG: Fed 350 chunks
+2025-12-19 11:32:22,060 - services - DEBUG - DEBUG: Fed 400 chunks
+2025-12-19 11:32:26,319 - services - DEBUG - DEBUG: Fed 450 chunks
+2025-12-19 11:32:30,587 - services - DEBUG - DEBUG: Fed 500 chunks
+2025-12-19 11:32:34,859 - services - DEBUG - DEBUG: Fed 550 chunks
+2025-12-19 11:32:39,128 - services - DEBUG - DEBUG: Fed 600 chunks
+2025-12-19 11:32:43,388 - services - DEBUG - DEBUG: Fed 650 chunks
+2025-12-19 11:32:47,657 - services - DEBUG - DEBUG: Fed 700 chunks
+2025-12-19 11:32:51,929 - services - DEBUG - DEBUG: Fed 750 chunks
+2025-12-19 11:32:56,189 - services - DEBUG - DEBUG: Fed 800 chunks
+2025-12-19 11:33:00,458 - services - DEBUG - DEBUG: Fed 850 chunks
+2025-12-19 11:33:04,729 - services - DEBUG - DEBUG: Fed 900 chunks
+2025-12-19 11:33:04,893 - services - DEBUG - DEBUG: Got 70 responses
+2025-12-19 11:33:08,999 - services - DEBUG - DEBUG: Fed 950 chunks
+2025-12-19 11:33:12,938 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-19 11:33:12,938 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-19 11:33:12,938 - services - DEBUG - DEBUG: Audio generator done
+2025-12-19 11:33:13,284 - services - DEBUG - DEBUG: Stream ended (70 responses)
+2025-12-19 11:33:15,965 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-19 11:33:16,003 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-19 11:33:16,003 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-19 11:33:16,003 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-19 11:33:16,004 - root - DEBUG - Updated settings: {'englishLevel': 'intermediate', 'tone': 'casual'}
+2025-12-19 11:33:18,376 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-19 11:33:19,617 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:19,810 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-19 11:33:19,810 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:19,824 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:19,938 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:20,041 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:20,115 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:20,278 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-19 11:33:20,393 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:21,294 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:21,296 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:21,631 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:21,725 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-19 11:33:21,728 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:21,934 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:22,205 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:22,299 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:22,497 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:22,505 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:22,702 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:22,888 - services - DEBUG - \U0001f4be Cached translation for: Hola, qué podemos hacer para q...
+2025-12-19 11:33:23,075 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:23,284 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:23,544 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-19 11:33:23,545 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:23,735 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:24,019 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:24,106 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:24,120 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:24,187 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:24,260 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:24,353 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:24,549 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-19 11:33:24,568 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:24,667 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:24,847 - services - DEBUG - DEBUG: Got 40 responses
+2025-12-19 11:33:24,849 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:26,035 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:26,037 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:26,288 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 34.969646869s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 34
+}
+]
+2025-12-19 11:33:26,310 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 34.942438804s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 34
+}
+]
+2025-12-19 11:33:27,331 - services - DEBUG - \U0001f4be Cached translation for:  O sea, yo quiero escuchar tod...
+2025-12-19 11:33:28,810 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-19 11:33:30,743 - root - DEBUG - DEBUG: Generating summary request
+2025-12-19 11:33:30,744 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:33:31,083 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 30.193490204s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 30
+}
+]
+2025-12-19 11:33:31,085 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-19 11:33:31,085 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-19 11:33:31,087 - services - DEBUG - DEBUG: Audio generator done
+2025-12-19 11:33:31,518 - services - DEBUG - DEBUG: Stream ended (41 responses)
+2025-12-19 11:34:01,457 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-19 11:34:01,496 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-19 11:34:01,496 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-19 11:34:01,496 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-19 11:34:01,497 - root - DEBUG - Updated settings: {'englishLevel': 'intermediate', 'tone': 'casual'}
+2025-12-19 11:34:03,374 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-19 11:34:05,343 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:05,582 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:05,772 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-19 11:34:05,944 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:06,212 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-19 11:34:06,213 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:06,241 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:06,723 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:06,736 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:06,908 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:07,250 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:07,410 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:07,514 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:07,754 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:07,785 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:07,921 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-19 11:34:07,922 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:08,157 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 53.092160526s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 53
+}
+]
+2025-12-19 11:34:08,265 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:08,353 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:08,671 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 52.590151435s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 52
+}
+]
+2025-12-19 11:34:08,917 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:09,001 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:09,202 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:09,420 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:09,513 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:09,568 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:09,725 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:10,041 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 51.212580317s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 51
+}
+]
+2025-12-19 11:34:10,042 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-19 11:34:10,047 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-19 11:34:10,048 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:10,175 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:10,186 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:10,347 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:10,464 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:10,703 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:10,749 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:10,763 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:10,928 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:11,117 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:11,410 - services - DEBUG - DEBUG: Got 40 responses
+2025-12-19 11:34:11,410 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:11,417 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:11,542 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:11,803 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:11,967 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:12,007 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:12,208 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:12,325 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:12,463 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:12,482 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:12,640 - services - DEBUG - DEBUG: Got 50 responses
+2025-12-19 11:34:12,642 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:12,890 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:12,983 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:13,076 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:13,231 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:13,512 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:13,611 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:13,775 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:14,017 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:14,170 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:14,313 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-19 11:34:14,359 - services - DEBUG - DEBUG: Got 60 responses
+2025-12-19 11:34:14,361 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:14,592 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:14,889 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 46.393547322s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 46
+}
+]
+2025-12-19 11:34:15,339 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:15,340 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2488523778928
+2025-12-19 11:34:15,647 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 45.63303163s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 45
+}
+]
+2025-12-19 11:34:21,376 - services - ERROR - Gemini Quota Exceeded: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 45.476343931s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 5
+}
+, retry_delay {
+  seconds: 45
+}
+]
+2025-12-19 11:34:21,389 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-19 11:34:22,843 - services - DEBUG - DEBUG: Fed 250 chunks
+2025-12-19 11:34:27,123 - services - DEBUG - DEBUG: Fed 300 chunks
+2025-12-19 11:34:31,383 - services - DEBUG - DEBUG: Fed 350 chunks
+2025-12-19 11:34:35,643 - services - DEBUG - DEBUG: Fed 400 chunks
+2025-12-19 11:34:39,960 - services - DEBUG - DEBUG: Fed 450 chunks
+2025-12-19 11:34:46,475 - services - DEBUG - DEBUG: Fed 500 chunks
+2025-12-19 11:34:49,807 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-19 11:34:49,807 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-19 11:34:49,807 - services - DEBUG - DEBUG: Audio generator done
+2025-12-19 11:34:50,384 - services - DEBUG - DEBUG: Stream ended (62 responses)

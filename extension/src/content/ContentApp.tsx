@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Overlay from '../components/Overlay';
 import { useSettings } from '../hooks/useSettings';
-import { getMeetingId, loadSpeakerNames, clearOldMeetings } from '../utils/meetingStorage';
-// import { saveSpeakerNames } from '../utils/meetingStorage'; // TODO: Use when implementing save functionality
+import { getMeetingId, loadSpeakerNames, saveSpeakerNames, clearOldMeetings } from '../utils/meetingStorage';
 
 interface ScriptProcessorNodeWithMonitor extends ScriptProcessorNode {
     _monitorInterval?: NodeJS.Timeout;
@@ -19,10 +18,10 @@ const ContentApp: React.FC = () => {
     const [summary, setSummary] = useState('');
     const [isSummaryOpen, setIsSummaryOpen] = useState(false);
 
-    // Speaker diarization state (TODO: Fully integrate with UI)
-    // const [detectedSpeakers, setDetectedSpeakers] = useState<number[]>([]);
+    // Speaker diarization state
+    const [detectedSpeakers] = useState<number[]>([]);
     const [speakerNames, setSpeakerNames] = useState<Record<string, string>>({});
-    // const [isSpeakerModalOpen, setIsSpeakerModalOpen] = useState(false);
+    const [isSpeakerModalOpen, setIsSpeakerModalOpen] = useState(false);
 
     const wsRef = useRef<WebSocket | null>(null);
     const audioContextRef = useRef<AudioContext | null>(null);
@@ -46,9 +45,6 @@ const ContentApp: React.FC = () => {
 
         // Clean up old meetings (30+ days)
         clearOldMeetings(30);
-
-        // Log speaker names for debugging
-        console.log('Current speaker names:', speakerNames);
 
         return () => {
             stopListening();
@@ -280,6 +276,23 @@ const ContentApp: React.FC = () => {
         audioContextRef.current = null;
     };
 
+    const handleSaveSpeakerNames = (names: Record<number, string>) => {
+        // Convert number keys to string keys for storage
+        const stringKeyNames: Record<string, string> = {};
+        Object.keys(names).forEach(key => {
+            stringKeyNames[key] = names[Number(key)];
+        });
+
+        setSpeakerNames(stringKeyNames);
+
+        // Save to localStorage
+        const meetingId = getMeetingId();
+        if (meetingId) {
+            saveSpeakerNames(meetingId, stringKeyNames);
+            console.log('💾 Saved speaker names:', stringKeyNames);
+        }
+    };
+
     const toggleListening = () => {
         if (isListening) stopListening();
         else startListening();
@@ -313,6 +326,12 @@ const ContentApp: React.FC = () => {
             isSummaryOpen={isSummaryOpen}
             onRequestSummary={handleRequestSummary}
             onCloseSummary={() => setIsSummaryOpen(false)}
+            detectedSpeakers={detectedSpeakers}
+            speakerNames={speakerNames}
+            isSpeakerModalOpen={isSpeakerModalOpen}
+            onOpenSpeakerModal={() => setIsSpeakerModalOpen(true)}
+            onCloseSpeakerModal={() => setIsSpeakerModalOpen(false)}
+            onSaveSpeakerNames={handleSaveSpeakerNames}
         />
     );
 };
