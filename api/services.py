@@ -45,10 +45,11 @@ class Transcriber:
         self.language_code = language_code
         
         # Speaker diarization config
+        # Speaker diarization - more sensitive settings
         diarization_config = speech.SpeakerDiarizationConfig(
             enable_speaker_diarization=True,
-            min_speaker_count=2,
-            max_speaker_count=6,
+            min_speaker_count=1,  # Allow 1+ speakers (more flexible)
+            max_speaker_count=10,  # Allow up to 10 speakers
         )
         
         self.config = speech.RecognitionConfig(
