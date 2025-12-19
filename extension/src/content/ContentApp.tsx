@@ -19,7 +19,7 @@ const ContentApp: React.FC = () => {
     const [isSummaryOpen, setIsSummaryOpen] = useState(false);
 
     // Speaker diarization state
-    const [detectedSpeakers] = useState<number[]>([]);
+    const [detectedSpeakers, setDetectedSpeakers] = useState<number[]>([]);
     const [speakerNames, setSpeakerNames] = useState<Record<string, string>>({});
     const [isSpeakerModalOpen, setIsSpeakerModalOpen] = useState(false);
 
@@ -85,8 +85,21 @@ const ContentApp: React.FC = () => {
                     return;
                 }
 
+
                 if (data.type === 'transcript') {
                     setTranscript(data.text);
+
+                    // Update detected speakers
+                    if (data.speaker !== null && data.speaker !== undefined) {
+                        setDetectedSpeakers(prev => {
+                            if (!prev.includes(data.speaker)) {
+                                console.log(`🎤 New speaker detected: ${data.speaker}`);
+                                return [...prev, data.speaker].sort((a, b) => a - b);
+                            }
+                            return prev;
+                        });
+                    }
+
                     if (data.is_final) {
                         setIsTranslating(true);
                     }
