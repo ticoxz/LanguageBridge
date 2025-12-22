@@ -213,16 +213,28 @@ const ContentApp: React.FC = () => {
             setIsListening(true);
             console.log("🔌 Connecting WebSocket...");
             await setupWebSocket();
-            console.log("🎤 WebSocket ready, starting WebRTC audio capture...");
+            console.log("🎤 WebSocket ready, waiting for WebRTC audio streams...");
 
-            // Wait a bit for WebRTC streams to be captured by interceptor
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            // Poll for streams with timeout (max 10 seconds)
+            let streams: any = null;
+            let attempts = 0;
+            const maxAttempts = 20; // 10 seconds (500ms * 20)
 
-            // Access captured streams from injected script
-            const streams = (window as any).getBananaBridgeStreams?.();
+            while (!streams && attempts < maxAttempts) {
+                streams = (window as any).getBananaBridgeStreams?.();
 
-            if (!streams) {
-                console.error('❌ WebRTC interceptor not ready');
+                if (streams && (streams.local || streams.remote?.length > 0)) {
+                    break;
+                }
+
+                console.log(`⏳ Waiting for audio streams... (${attempts + 1}/${maxAttempts})`);
+                await new Promise(resolve => setTimeout(resolve, 500));
+                attempts++;
+            }
+
+            if (!streams || (!streams.local && (!streams.remote || streams.remote.length === 0))) {
+                console.error('❌ No audio streams available. Please enable your microphone in Google Meet first.');
+                setTranscript('⚠️ Please enable your microphone in Google Meet first, then try again.');
                 setIsListening(false);
                 return;
             }
