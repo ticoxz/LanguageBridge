@@ -196,38 +196,51 @@ const ContentApp: React.FC = () => {
                 }
             });
 
-            // 2. Get tab audio stream
-            console.log("🔊 Requesting tab audio access...");
-            const tabStream = await navigator.mediaDevices.getDisplayMedia({
-                video: false,
-                audio: {
-                    echoCancellation: true,
-                    noiseSuppression: true,
-                    sampleRate: 16000
-                }
-            });
+            // 2. Try to get tab audio stream (optional)
+            let tabStream: MediaStream | null = null;
+            try {
+                console.log("🔊 Requesting tab audio access (optional)...");
+                tabStream = await navigator.mediaDevices.getDisplayMedia({
+                    video: false,
+                    audio: {
+                        echoCancellation: true,
+                        noiseSuppression: true,
+                        sampleRate: 16000
+                    }
+                });
+                console.log("✅ Tab audio captured successfully");
+            } catch (tabError) {
+                console.log("⚠️ Tab audio capture failed or cancelled, using microphone only");
+                console.error(tabError);
+            }
 
-            streamRef.current = micStream;
-
-            // 3. Create audio context and mix streams
+            // 3. Create audio context and mix streams (if tab audio available)
             audioContextRef.current = new AudioContext({ sampleRate: 16000 });
 
             if (audioContextRef.current.state === 'suspended') {
                 await audioContextRef.current.resume();
             }
 
-            // Create sources for both streams
-            const micSource = audioContextRef.current.createMediaStreamSource(micStream);
-            const tabSource = audioContextRef.current.createMediaStreamSource(tabStream);
+            let finalStream: MediaStream;
 
-            // Create destination for mixed audio
-            const destination = audioContextRef.current.createMediaStreamDestination();
+            if (tabStream) {
+                // Mix both streams
+                const micSource = audioContextRef.current.createMediaStreamSource(micStream);
+                const tabSource = audioContextRef.current.createMediaStreamSource(tabStream);
+                const destination = audioContextRef.current.createMediaStreamDestination();
 
-            // Connect both sources to destination
-            micSource.connect(destination);
-            tabSource.connect(destination);
+                micSource.connect(destination);
+                tabSource.connect(destination);
 
-            console.log("✅ Audio streams mixed successfully");
+                finalStream = destination.stream;
+                console.log("✅ Audio streams mixed successfully (mic + tab)");
+            } else {
+                // Use microphone only
+                finalStream = micStream;
+                console.log("✅ Using microphone only");
+            }
+
+            streamRef.current = finalStream; // Store the final stream for stopping later
 
             const monitorInterval = setInterval(async () => {
                 if (!audioContextRef.current) return;
@@ -255,8 +268,8 @@ const ContentApp: React.FC = () => {
                 }
             }, 1000);
 
-            // Use the mixed audio stream
-            const source = audioContextRef.current.createMediaStreamSource(destination.stream);
+            // Use the final stream (mixed or mic-only)
+            const source = audioContextRef.current.createMediaStreamSource(finalStream);
             sourceRef.current = source;
 
             processorRef.current = audioContextRef.current.createScriptProcessor(4096, 1, 1);
