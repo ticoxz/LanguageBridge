@@ -186,14 +186,48 @@ const ContentApp: React.FC = () => {
             await setupWebSocket();
             console.log("🎤 WebSocket ready, starting audio capture...");
 
-            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-            streamRef.current = stream;
+            // 1. Get microphone stream
+            console.log("🎤 Requesting microphone access...");
+            const micStream = await navigator.mediaDevices.getUserMedia({
+                audio: {
+                    echoCancellation: true,
+                    noiseSuppression: true,
+                    sampleRate: 16000
+                }
+            });
 
-            audioContextRef.current = new AudioContext();
+            // 2. Get tab audio stream
+            console.log("🔊 Requesting tab audio access...");
+            const tabStream = await navigator.mediaDevices.getDisplayMedia({
+                video: false,
+                audio: {
+                    echoCancellation: true,
+                    noiseSuppression: true,
+                    sampleRate: 16000
+                }
+            });
+
+            streamRef.current = micStream;
+
+            // 3. Create audio context and mix streams
+            audioContextRef.current = new AudioContext({ sampleRate: 16000 });
 
             if (audioContextRef.current.state === 'suspended') {
                 await audioContextRef.current.resume();
             }
+
+            // Create sources for both streams
+            const micSource = audioContextRef.current.createMediaStreamSource(micStream);
+            const tabSource = audioContextRef.current.createMediaStreamSource(tabStream);
+
+            // Create destination for mixed audio
+            const destination = audioContextRef.current.createMediaStreamDestination();
+
+            // Connect both sources to destination
+            micSource.connect(destination);
+            tabSource.connect(destination);
+
+            console.log("✅ Audio streams mixed successfully");
 
             const monitorInterval = setInterval(async () => {
                 if (!audioContextRef.current) return;
@@ -221,7 +255,8 @@ const ContentApp: React.FC = () => {
                 }
             }, 1000);
 
-            const source = audioContextRef.current.createMediaStreamSource(stream);
+            // Use the mixed audio stream
+            const source = audioContextRef.current.createMediaStreamSource(destination.stream);
             sourceRef.current = source;
 
             processorRef.current = audioContextRef.current.createScriptProcessor(4096, 1, 1);

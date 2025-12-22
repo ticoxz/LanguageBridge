@@ -3384,3 +3384,57 @@ Please retry in 53.66406961s. [links {
 2025-12-20 01:07:06,740 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
 2025-12-20 01:07:06,740 - services - DEBUG - DEBUG: Audio generator done
 2025-12-20 01:07:07,424 - services - DEBUG - DEBUG: Stream ended (153 responses)
+2025-12-22 00:35:16,186 - google.auth._default - DEBUG - Checking c:\Users\Tico\Desktop\SaaS\LanguageBridge\api\credenciales.json for explicit credentials as part of auth process...
+2025-12-22 00:35:16,284 - services - DEBUG - DEBUG: Transcribe thread started
+2025-12-22 00:35:16,284 - services - DEBUG - DEBUG: Starting Google Speech stream...
+2025-12-22 00:35:16,284 - services - DEBUG - DEBUG: Queue feeder started
+2025-12-22 00:35:16,286 - root - DEBUG - Updated settings: {'englishLevel': 'intermediate', 'tone': 'casual'}
+2025-12-22 00:35:18,833 - services - DEBUG - DEBUG: Waiting for responses...
+2025-12-22 00:35:19,258 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:19,258 - grpc._cython.cygrpc - DEBUG - Using AsyncIOEngine.POLLER as I/O engine
+2025-12-22 00:35:19,259 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:19,261 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:19,359 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:19,522 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:19,533 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:19,694 - services - DEBUG - DEBUG: Got 10 responses
+2025-12-22 00:35:19,696 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:19,946 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:20,191 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:20,193 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:20,280 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:20,546 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:20,711 - services - DEBUG - DEBUG: Fed 50 chunks
+2025-12-22 00:35:21,137 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:21,225 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:21,566 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:21,822 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:22,070 - services - DEBUG - DEBUG: Got 20 responses
+2025-12-22 00:35:22,072 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:22,075 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:22,161 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:22,258 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:22,334 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:22,589 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:22,688 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:22,934 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:23,196 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:23,278 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:23,456 - services - DEBUG - DEBUG: Got 30 responses
+2025-12-22 00:35:23,457 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:23,522 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:23,820 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:23,865 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:24,041 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:24,569 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:24,569 - grpc._cython.cygrpc - DEBUG - [_cygrpc] Loaded running loop: id(loop)=2377829224656
+2025-12-22 00:35:24,971 - services - DEBUG - DEBUG: Fed 100 chunks
+2025-12-22 00:35:27,157 - services - DEBUG - \U0001f4be Cached translation for: Hola, cómo están esta es una p...
+2025-12-22 00:35:28,121 - services - DEBUG - \U0001f4be Cached translation for: Hola, cómo están esta es una p...
+2025-12-22 00:35:29,241 - services - DEBUG - DEBUG: Fed 150 chunks
+2025-12-22 00:35:33,512 - services - DEBUG - DEBUG: Fed 200 chunks
+2025-12-22 00:35:37,772 - services - DEBUG - DEBUG: Fed 250 chunks
+2025-12-22 00:35:38,424 - root - INFO - DEBUG: Client disconnected (event): user_0gnlc3n6y
+2025-12-22 00:35:38,424 - root - INFO - DEBUG: Entering finally block for user: user_0gnlc3n6y
+2025-12-22 00:35:38,424 - services - DEBUG - DEBUG: Audio generator done
+2025-12-22 00:35:38,760 - services - DEBUG - DEBUG: Stream ended (35 responses)
