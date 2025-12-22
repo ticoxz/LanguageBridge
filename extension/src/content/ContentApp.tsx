@@ -29,6 +29,35 @@ const ContentApp: React.FC = () => {
     const streamRef = useRef<MediaStream | null>(null);
     const sourceRef = useRef<MediaStreamAudioSourceNode | null>(null);
 
+    // Inject WebRTC interceptor script
+    useEffect(() => {
+        console.log('🚀 BananaBridge: Injecting WebRTC interceptor...');
+        const script = document.createElement('script');
+        script.src = chrome.runtime.getURL('inject.js');
+        script.onload = () => {
+            console.log('✅ BananaBridge: Interceptor script loaded');
+            script.remove();
+        };
+        script.onerror = (error) => {
+            console.error('❌ BananaBridge: Failed to load interceptor', error);
+        };
+        (document.head || document.documentElement).appendChild(script);
+    }, []);
+
+    // Listen for WebRTC stream messages
+    useEffect(() => {
+        const handleMessage = (event: MessageEvent) => {
+            if (event.data.type === 'BANANABRIDGE_LOCAL_STREAM') {
+                console.log('📥 BananaBridge: Received local stream notification', event.data.streamId);
+            } else if (event.data.type === 'BANANABRIDGE_REMOTE_STREAM') {
+                console.log('📥 BananaBridge: Received remote stream notification', event.data.streamId);
+            }
+        };
+
+        window.addEventListener('message', handleMessage);
+        return () => window.removeEventListener('message', handleMessage);
+    }, []);
+
     useEffect(() => {
         const userId = localStorage.getItem('lb_user_id') || `user_${Math.random().toString(36).substr(2, 9)}`;
         localStorage.setItem('lb_user_id', userId);
