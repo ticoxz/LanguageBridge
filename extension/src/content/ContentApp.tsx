@@ -200,15 +200,26 @@ const ContentApp: React.FC = () => {
             let tabStream: MediaStream | null = null;
             try {
                 console.log("🔊 Requesting tab audio access (optional)...");
-                tabStream = await navigator.mediaDevices.getDisplayMedia({
-                    video: false,
+                // Chrome requires video:true even for audio-only capture
+                const displayStream = await navigator.mediaDevices.getDisplayMedia({
+                    video: true, // Required by Chrome
                     audio: {
                         echoCancellation: true,
                         noiseSuppression: true,
                         sampleRate: 16000
                     }
                 });
-                console.log("✅ Tab audio captured successfully");
+
+                // Extract only the audio track
+                const audioTracks = displayStream.getAudioTracks();
+                if (audioTracks.length > 0) {
+                    tabStream = new MediaStream(audioTracks);
+                    // Stop video track since we don't need it
+                    displayStream.getVideoTracks().forEach(track => track.stop());
+                    console.log("✅ Tab audio captured successfully");
+                } else {
+                    console.log("⚠️ No audio track in display stream");
+                }
             } catch (tabError) {
                 console.log("⚠️ Tab audio capture failed or cancelled, using microphone only");
                 console.error(tabError);
