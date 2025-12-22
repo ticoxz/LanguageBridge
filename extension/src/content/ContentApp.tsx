@@ -213,74 +213,61 @@ const ContentApp: React.FC = () => {
             setIsListening(true);
             console.log("🔌 Connecting WebSocket...");
             await setupWebSocket();
-            console.log("🎤 WebSocket ready, starting audio capture...");
+            console.log("🎤 WebSocket ready, starting WebRTC audio capture...");
 
-            // 1. Get microphone stream
-            console.log("🎤 Requesting microphone access...");
-            const micStream = await navigator.mediaDevices.getUserMedia({
-                audio: {
-                    echoCancellation: true,
-                    noiseSuppression: true,
-                    sampleRate: 16000
-                }
-            });
+            // Wait a bit for WebRTC streams to be captured by interceptor
+            await new Promise(resolve => setTimeout(resolve, 1000));
 
-            // 2. Try to get tab audio stream (optional)
-            let tabStream: MediaStream | null = null;
-            try {
-                console.log("🔊 Requesting tab audio access (optional)...");
-                // Chrome requires video:true even for audio-only capture
-                const displayStream = await navigator.mediaDevices.getDisplayMedia({
-                    video: true, // Required by Chrome
-                    audio: {
-                        echoCancellation: true,
-                        noiseSuppression: true,
-                        sampleRate: 16000
-                    }
-                });
+            // Access captured streams from injected script
+            const streams = (window as any).getBananaBridgeStreams?.();
 
-                // Extract only the audio track
-                const audioTracks = displayStream.getAudioTracks();
-                if (audioTracks.length > 0) {
-                    tabStream = new MediaStream(audioTracks);
-                    // Stop video track since we don't need it
-                    displayStream.getVideoTracks().forEach(track => track.stop());
-                    console.log("✅ Tab audio captured successfully");
-                } else {
-                    console.log("⚠️ No audio track in display stream");
-                }
-            } catch (tabError) {
-                console.log("⚠️ Tab audio capture failed or cancelled, using microphone only");
-                console.error(tabError);
+            if (!streams) {
+                console.error('❌ WebRTC interceptor not ready');
+                setIsListening(false);
+                return;
             }
 
-            // 3. Create audio context and mix streams (if tab audio available)
+            console.log('📊 Captured streams:', {
+                local: streams.local?.id,
+                remote: streams.remote.map((s: MediaStream) => s.id)
+            });
+
+            // Create audio context
             audioContextRef.current = new AudioContext({ sampleRate: 16000 });
 
             if (audioContextRef.current.state === 'suspended') {
                 await audioContextRef.current.resume();
             }
 
-            let finalStream: MediaStream;
-
-            if (tabStream) {
-                // Mix both streams
-                const micSource = audioContextRef.current.createMediaStreamSource(micStream);
-                const tabSource = audioContextRef.current.createMediaStreamSource(tabStream);
-                const destination = audioContextRef.current.createMediaStreamDestination();
-
-                micSource.connect(destination);
-                tabSource.connect(destination);
-
-                finalStream = destination.stream;
-                console.log("✅ Audio streams mixed successfully (mic + tab)");
-            } else {
-                // Use microphone only
-                finalStream = micStream;
-                console.log("✅ Using microphone only");
+            // Collect all audio streams (local + remote)
+            const allStreams: MediaStream[] = [];
+            if (streams.local) {
+                allStreams.push(streams.local);
+                console.log('✅ Using local stream (microphone)');
+            }
+            if (streams.remote && streams.remote.length > 0) {
+                allStreams.push(...streams.remote);
+                console.log(`✅ Using ${streams.remote.length} remote stream(s)`);
             }
 
-            streamRef.current = finalStream; // Store the final stream for stopping later
+            if (allStreams.length === 0) {
+                console.error('❌ No audio streams available');
+                setIsListening(false);
+                return;
+            }
+
+            // Mix all streams
+            const destination = audioContextRef.current.createMediaStreamDestination();
+
+            allStreams.forEach((stream, index) => {
+                const source = audioContextRef.current!.createMediaStreamSource(stream);
+                source.connect(destination);
+                console.log(`🔗 Connected stream ${index + 1}/${allStreams.length}`);
+            });
+
+            const finalStream = destination.stream;
+            streamRef.current = finalStream;
+            console.log('✅ All streams mixed successfully');
 
             const monitorInterval = setInterval(async () => {
                 if (!audioContextRef.current) return;
